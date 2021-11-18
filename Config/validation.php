@@ -1,47 +1,32 @@
 <?php
-class validation
+class Validation
 {
-	static function validationLogin($login)
+	public static function verifierNews (string &$titre, string &$contenu, string &$cheminImage, &$vueErreur)
 	{
-		$experession = "/^[a-zA-Z0-9]+$/";
-		if(preg_match($experession, $login))
+		if(isset($titre) && $titre == "")
 		{
-			echo("login bon\n");
-			return $login;
+			$vueErreur[] = 'Titre de la news vide.';
+			$titre = "";
 		}
-		else
+		if(isset($contenu) && $contenu == "")
 		{
-			echo("login mauvais\n");
-			return false;
+			$vueErreur[] = 'Contenu de la news vide.';
+			$contenu = "";
 		}
-	}
-
-	static function validationTitre($titre)
-	{
-		$expTitre = "/^([a-zA-Z]* ?)*$/";
-		if(preg_match($expTitre, $titre))
+		if($titre != filter_var($titre,FILTER_SANATIZE_STRING))
 		{
-			echo("titre bon\n");
-			return $titre;
+			$vueErreur[] = 'Titre dangereux.';
+			$titre = "";
 		}
-		else
+		if($contenu != filter_var($contenu,FILTER_SANATIZE_STRING))
 		{
-			echo("titre mauvais\n");
-			return false;
+			$vueErreur[] = 'Contenu dangereux.';
+			$contenu = "";
 		}
-	}
-
-	static function validationContenu($contenu)
-	{
-		if(isset($contenu) && $contenu == filter_var($contenu, FILTER_SANITIZE_STRING))
+		if($cheminImage != filter_var($cheminImage,FILTER_SANATIZE_STRING))
 		{
-			echo("contenu bon\n");
-			return $contenu;
-		}
-		else
-		{
-			echo("contenu dangereux\n");
-			return false;
+			$vueErreur[] = 'Chemin image dangereux.';
+			$cheminImage = "";
 		}
 	}
 }
