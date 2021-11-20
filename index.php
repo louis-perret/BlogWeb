@@ -6,6 +6,7 @@
 		<title>Blog</title>
 	</head>
 	<body>
-		<?php require("Tests/tests.php");?>
+		<?php //require("Tests/tests.php");?>
+		<?php include("Vues/pagePrincipale.php"); ?>
 	</body>
 </html>

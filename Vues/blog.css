@@ -1,0 +1,39 @@
+li{
+	list-style: none;
+}
+
+.blocMain{
+	width: auto;
+	margin: 50px;
+	padding: 10px;
+	border: 2px double black;
+	border-radius: 10px;
+	box-shadow: 9px 9px 9px black ;
+	
+}
+
+.alignement{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header{
+	margin: 5px;
+	padding: 5px;
+	border: 2px double black;
+	border-radius: 10px;
+}
+.bloc1{
+	float: right;
+	border: 2px dashed gray;
+	padding: 10px;
+	margin: 10px;
+}
+
+.footerNews{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+

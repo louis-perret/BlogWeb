@@ -4,6 +4,7 @@
 		private $date; //Sa date de publication
 		private $titre; //Son titre
 		private $contenu; //Son contenu
+		private $image;
 
 		/* 
 		Objectif : Construire un objet Nexs
@@ -14,10 +15,11 @@
 				contenu -> son contenu
 			-Sortie : aucun
 		*/
-		function __construct($date,$titre,$contenu){
+		function __construct($date,$titre,$contenu,$image){
 			$this->date=$date;
 			$this->titre=$titre;
 			$this->contenu=$contenu;
+			$this->image=$image;
 		}
 
 		/* Getter et setter de chaque propriété */
@@ -34,6 +36,10 @@
 			return $this->contenu;
 		}
 
+		public function getImage(){
+			return $this->image;
+		}
+
 		/*Setter */
 		public function setDate($date){
 			$this->date=$date;
@@ -45,6 +51,10 @@
 
 		public function setContenu($contenu){
 			$this->contenu=$contenu;
+		}
+
+		public function setImage($image){
+			$this->image=$image;
 		}
 
 		/* Renvoie l'instance sous forme de chaîne de caractères */
