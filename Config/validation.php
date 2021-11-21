@@ -1,6 +1,7 @@
 <?php
 class Validation
 {
+	//Objectif : Vérifie si titre,contenu,cheminImage et vueErreur ne sont ni nuls, ni vide
 	public static function verifierNews (string &$titre, string &$contenu, string &$cheminImage, &$vueErreur)
 	{
 		if(isset($titre) && $titre == "")
@@ -27,6 +28,13 @@ class Validation
 		{
 			$vueErreur[] = 'Chemin image dangereux.';
 			$cheminImage = "";
+		}
+	}
+
+	//Objectif : Vérifie si le login et le mot de passe rentrés ne sont ni vide, ni remplis d'espace
+	public static function verifierConnexion(string $login, string $password, array $vueErreur){
+		if(!isset($login) || empty($login) || !isset($password) || empty($password)){
+			$vueErreur[]='Saisie invalide';
 		}
 	}
 }

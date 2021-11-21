@@ -13,10 +13,8 @@
   </head>
   <body>
     <?php 
-      require_once('Modele/Admin.php');
       $estConnecte=false;
-      #$a = new Admin("loperret2","sasa"); 
-      if(isset($a)){ //Teste si un administrateur est connecté
+      if(isset($compte)){ //Teste si un administrateur est connecté
         $estConnecte=true;
       }
     ?>
@@ -51,9 +49,11 @@
           </form>
           <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
             if(!$estConnecte) : //Quand il sera déconnecté ?> 
-            <button type="button" class="btn btn-outline-info" style="margin: 10px;">Se connecter</button>
+              <form action="Vues/pageConnexion.php"> <!-- Pour qu'un bouton fonctionne il faut le mettre dans un formulaire -->
+                <button type="submit" class="btn btn-outline-info" style="margin: 10px;">Se connecter</button>
+              </form>
           <?php else : //Quand il sera connecté ?> 
-            <button type="button" class="btn btn-outline-danger" style="margin: 10px;">Se déconnecter</button>
+            <button  type="button" class="btn btn-outline-danger" style="margin: 10px;">Se déconnecter</button>
           <?php endif; ?>
           
         </div>
@@ -66,12 +66,12 @@
           require_once('Modele/News.php');
           $tabNews=[];
           for($i=0;$i<20;$i++){
-            $n=new News(date('d-m-Y'),"Titre","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            $n=new News(20,date('d-m-Y'),"Titre","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Forig00.deviantart.net%2F74ee%2Ff%2F2011%2F218%2F5%2F9%2Fhatsune_miku___po_pi_po_dance_by_teamvocaloid-d45mqil.gif&f=1&nofb=1");
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Forig00.deviantart.net%2F74ee%2Ff%2F2011%2F218%2F5%2F9%2Fhatsune_miku___po_pi_po_dance_by_teamvocaloid-d45mqil.gif&f=1&nofb=1",[]);
             $tabNews[]=$n;
           }
           foreach($tabNews as $news) : ?>

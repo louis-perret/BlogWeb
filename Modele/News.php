@@ -1,13 +1,15 @@
 <?php
 	/* Classe permettant de représenter une news du blog*/
 	class News{
-		private $date; //Sa date de publication
-		private $titre; //Son titre
-		private $contenu; //Son contenu
-		private $image;
+		private int $id;
+		private string $date; //Sa date de publication
+		private string $titre; //Son titre
+		private string $contenu; //Son contenu
+		private string $image;
+		private array $tabCommentaires = [];
 
 		/* 
-		Objectif : Construire un objet Nexs
+		Objectif : Construire un objet News
 		Paramètres :
 			-Entrée :
 				date -> date de publication
@@ -15,15 +17,27 @@
 				contenu -> son contenu
 			-Sortie : aucun
 		*/
-		function __construct($date,$titre,$contenu,$image){
+		function __construct(int $id,string $date,string $titre,string $contenu,$image, array $tabCommentaires){
+			$this->id=$id;
 			$this->date=$date;
 			$this->titre=$titre;
 			$this->contenu=$contenu;
-			$this->image=$image;
+			if(!isset($image)){
+				$this->image="";
+			}
+			else{
+				$this->image=$image;
+			}
+			$this->tabCommentaires=$tabCommentaires; //On initialise sa liste de commentaires
 		}
 
 		/* Getter et setter de chaque propriété */
 		/* Getter */
+
+		public function getId(){
+			return $this->id;
+		}
+
 		public function getDate(){
 			return $this->date;
 		}
@@ -38,6 +52,10 @@
 
 		public function getImage(){
 			return $this->image;
+		}
+
+		public function getCommentaires(){
+			return $this->tabCommentaires;
 		}
 
 		/*Setter */
@@ -55,6 +73,12 @@
 
 		public function setImage($image){
 			$this->image=$image;
+		}
+
+
+
+		public function ajouterCommentaire(Commentaire $c){
+			$this->tabCommentaires[]=$c;
 		}
 
 		/* Renvoie l'instance sous forme de chaîne de caractères */

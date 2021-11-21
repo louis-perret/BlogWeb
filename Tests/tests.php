@@ -9,19 +9,51 @@
 	<body>
 		<h1>Tests</h1>
 		<?php
-		
+			require_once('Config/Validation.php');
+			require_once("Config/Connexion.php");
 			require_once("Modele/News.php");
+			require_once("Controleurs/newsGateway.php");
 
-			$n=new News(date('d-m-y'),"Bientôt Noël","Après Hallowen, ma fête préférée fait bientôt son grand retour après bientôt un an d'absence !");
+			$n=new News(20,date('d-m-y'),"Bientôt Noël","Après Hallowen, ma fête préférée fait bientôt son grand retour après bientôt un an d'absence !","",[]);
 
 			echo "$n";
 
-			$tabErreur=array(
-				"1" => "Mauvais identifiant",
-				"2" => "Mauvais login",
-			);
+			
 
-			require('Vues/erreur.php');
+			$dsn="mysql:host=localhost;dbname=bdblog";
+			
+
+			try{
+				$c = new Connexion($dsn,"root","");
+			}
+			catch(PDOException $e){
+				 echo('Problème de connenxion à la base de données');
+			}
+
+			if(true){ //Test de NewsGateway.php
+				$newsGateway=new NewsGateway($c); //Fonctionne
+				$tabNews=[];
+				$tabNews=$newsGateway->getNewsByTitre('coucou'); //Fonctionne
+				foreach($tabNews as $n){
+					echo($n);
+				}
+
+				$tabNews=$newsGateway->getNewsByDate(date('d-m-y')); //Fonctionne
+				foreach($tabNews as $n){
+					echo($n);
+				}
+
+				$tabNews=$newsGateway->getNewsByTitre('Bientôt Noël');
+				foreach($tabNews as $news){
+					$n=$news;
+				}
+	            //$newsGateway->insertNews($n);//Fonctionne
+				$newsGateway->deleteNews($n);//Fonctionne
+
+			}
+			
+            
+
 		?>
 	</body>
 </html>
