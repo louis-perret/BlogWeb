@@ -1,9 +1,9 @@
 <?php
 class Compte
 {
-	private string $username;
-	private string $password;
-	private string $estConnecte; 
+	private $username;
+	private $password;
+	private $estConnecte; 
 
 	function __construct(string $username, string $password){
 			$this->username=$username;

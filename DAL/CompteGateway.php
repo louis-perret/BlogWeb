@@ -1,7 +1,7 @@
 <?php
 
 	//Gateway qui sert uniquement à permettre la connexion de l'administrateur du site
-	require_once('Modele/Compte.php');
+	require_once('Metier/Compte.php');
 	class CompteGateway
 	{
 			private $con;

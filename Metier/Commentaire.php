@@ -1,9 +1,9 @@
 <?php
 	class Commentaire
 	{
-		private string $date;
-		private string $contenu;
-		private string $pseudo;
+		private $date;
+		private $contenu;
+		private $pseudo;
 		//private array $listeCommentaire; //Tableau de commentaires
 
 		public function __construct(string $date, string $contenu){

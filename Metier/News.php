@@ -1,12 +1,12 @@
 <?php
 	/* Classe permettant de représenter une news du blog*/
 	class News{
-		private int $id;
-		private string $date; //Sa date de publication
-		private string $titre; //Son titre
-		private string $contenu; //Son contenu
-		private string $image;
-		private array $tabCommentaires = [];
+		private $id;
+		private $date; //Sa date de publication
+		private $titre; //Son titre
+		private $contenu; //Son contenu
+		private $image;
+		private $tabCommentaires = [];
 
 		/* 
 		Objectif : Construire un objet News
