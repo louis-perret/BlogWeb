@@ -37,6 +37,3 @@ li{
 	justify-content: space-between;
 }
 
-.newsContent{
-	width: 80%
-}

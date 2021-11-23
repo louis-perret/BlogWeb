@@ -12,12 +12,12 @@
     <title>Blog</title>
   </head>
   <body>
-    <?php 
-      $estConnecte=false;
-      if(isset($compte)){ //Teste si un administrateur est connecté
-        $estConnecte=true;
-      }
-    ?>
+	<?php 
+      			$estConnecte=false;
+      			if(isset($compte)){ //Teste si un administrateur est connecté
+        			$estConnecte=true;
+      			}
+    		?>
     <?php require('Vues/header.php'); ?>
     <div>
       <!--News-->
