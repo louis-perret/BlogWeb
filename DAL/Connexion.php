@@ -9,6 +9,7 @@
 			$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 
+		//Objectif : Exécuter une requête sql
 		public function executeQuery($query,$param){
 			$this->stmt=parent::prepare($query);
 			foreach($param as $name => $value){
@@ -17,6 +18,7 @@
 			return $this->stmt->execute();
 		}
 
+		//Objectif :Récupérer les résultats d'une requête sql
 		public function getResults(){
 			return $this->stmt->fetchall();
 		}

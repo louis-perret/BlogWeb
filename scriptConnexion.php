@@ -1,8 +1,10 @@
 <?php
 
 	//Script qui sera effectué par un contrôleur plus tard
+	//A REVOIR
+	require('Config/config.php');
 	require_once('Config/Validation.php');
-	require_once('Controleurs/CompteGateway.php');
+	require_once('DAL/CompteGateway.php');
 
 	$loginAdmin=$_POST['login'];
 	$passwordAdmin=$_POST['password'];

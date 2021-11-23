@@ -1,6 +1,4 @@
 <?php
-	//require_once('/home/IUT/juduteyrat/Documents/php/Config/Validation.php');
-	require_once('Config/Validation.php');
 	//require_once('News.php');
 
 	class NewsGateway{
@@ -9,12 +7,6 @@
 
 		public function __construct($con){
 			$this->con=$con;
-		}
-
-		//Objectif : Créer une news
-		public function creerNews(string $titre, string $contenu, string $date, string $cheminImage){
-			Validation::verifierNews($titre,$contenu,$date,$cheminImage);
-			return new News($date,$titre,$contenu,$cheminImage);
 		}
 
 		//Objectif : insérer une news dans la BD
@@ -50,7 +42,6 @@
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
 
-			//var_dump($res);
 			$tabNews=[];
 			foreach ($res as $key => $value) {
 				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],$res[$key]['image'],[]);
