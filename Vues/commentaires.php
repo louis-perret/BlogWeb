@@ -7,7 +7,7 @@
 	
 		    <!-- Bootstrap CSS -->
     		<link rel="stylesheet" href="Vues/bootstrap/css/bootstrap.css" type="text/css"/>
-    		<link rel="stylesheet" href="Vues/blog.css">
+    		<link rel="stylesheet" href="Vues/blog.css"/>
 
     		<title>Blog</title>
   	</head>

@@ -62,5 +62,14 @@ class Validation
 			$vueErreur[]='Saisie invalide';
 		}
 	}
+
+	//Objectif : Vérifie si le numéro de page existe, est un nombre, est positif et inférieur au nombre maximum de pages
+	public static function verifierPage($numPage,$nbMax){
+		if(!isset($numPage) || $numPage!=filter_var($numPage,FILTER_VALIDATE_INT) || $numPage<=0 || $numPage>$nbMax){
+			return false;
+		}
+
+		return true;
+	}
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 	//Script qui sera effectué par un contrôleur plus tard
-	//A REVOIR
+	//A REVOIR quand on verra la connexion en cours
 	require('Config/config.php');
 	require_once('Config/Validation.php');
 	require_once('DAL/CompteGateway.php');

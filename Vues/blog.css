@@ -37,6 +37,10 @@ li{
 	justify-content: space-between;
 }
 
+.lien{
+	color: black;
+}
+
 .newsContent{
 	width: 80%
 }

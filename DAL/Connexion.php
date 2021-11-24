@@ -18,7 +18,7 @@
 			return $this->stmt->execute();
 		}
 
-		//Objectif :Récupérer les résultats d'une requête sql
+		//Objectif :Récupérer les résultats de la dernière requête sql exécutée
 		public function getResults(){
 			return $this->stmt->fetchall();
 		}

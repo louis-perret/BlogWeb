@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<?php //include("Vues/commentaires.php"); ?>
-		<?php include("Vues/pagePrincipale.php"); ?>
+		<?php //include("Vues/pagePrincipale.php"); ?>
+		<?php require("scriptAfficherParPage.php"); ?>
 	</body>
 </html>

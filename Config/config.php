@@ -1,5 +1,5 @@
 <?php
-	require_once("../DAL/Connexion.php");
+	require_once("DAL/Connexion.php");
 
 	//Pour passer de l'un à l'autre, passer true à false
 	if(true){ //Pour louis
