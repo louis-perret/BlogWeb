@@ -12,6 +12,7 @@
 			}
 
 			//Objectif : Récupérer le compte admin
+			//Sera amméné à peut-être changer lorqu'on verra comment gérer une connexion en cours
 			public function getCompte(string $login, string $password)
 			{
 				$query="select * from admin where pseudo=:login and motDePasse=:password";

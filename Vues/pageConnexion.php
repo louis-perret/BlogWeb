@@ -12,9 +12,10 @@
     <title>Blog</title>
   </head>
   <body>
+    <?php require('header.php'); ?>
     <!-- Contient seulement le formulaire de connexion -->
     <div class="container">
-      <form method="post" action="../scriptConnexion.php">
+      <form method="post" action="../scriptConnexion.php"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
         <div>
           <div class="form-group">
             <label>Pseudo</label>
