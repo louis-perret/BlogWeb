@@ -40,7 +40,7 @@
 			$this->contenu=$contenu;
 		}
 
-		public function setPseudo(string $contenu){
+		public function setPseudo(string $pseudo){
 			$this->pseudo=$pseudo;
 		}
 

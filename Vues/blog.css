@@ -9,7 +9,7 @@ li{
 	border: 2px double black;
 	border-radius: 10px;
 	box-shadow: 9px 9px 9px black ;
-	
+	min-width: 40%
 }
 
 .alignement{
@@ -39,4 +39,33 @@ li{
 
 .newsContent{
 	width: 80%
+}
+
+.image{
+	margin-left: 10px;
+	text-align: left;
+	display: flex; 
+}
+
+.sticky{
+	position: sticky;
+	display: flex;
+	justify-content: center;
+	align-items: down;
+	bottom: 0px;
+}
+
+.wrapper{
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.all{
+	margin: 0;
+	height: 100%
+}
+
+.displayer{
+	display: flex;
 }

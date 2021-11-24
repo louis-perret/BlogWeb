@@ -37,3 +37,35 @@ li{
 	justify-content: space-between;
 }
 
+.newsContent{
+	width: 80%
+}
+
+.image{
+	margin-left: 10px;
+	text-align: left;
+	display: flex; 
+}
+
+.sticky{
+	position: sticky;
+	display: flex;
+	justify-content: center;
+	align-items: down;
+	bottom: 0px;
+}
+
+.wrapper{
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.all{
+	margin: 0;
+	height: 100%
+}
+
+.displayer{
+	display: flex;
+}
