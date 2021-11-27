@@ -1,5 +1,6 @@
 <?php
 	require_once('Metier/Commentaire.php');
+	require_once('Metier/News.php');
 
 	class CommentaireGateway {
 	
@@ -10,19 +11,20 @@
 		}
 		
 		//Objectif : insérer un commentaire dans la BD
-		public function insertCom(Commentaire $c){
-			$query = 'insert into commentaire(date,contenu,pseudo) Values(STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:pseudo)';
+		public function insertCom(Commentaire $c, News $n){
+			$query = 'insert into commentaire(date,contenu,pseudo,idNews) Values(STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:pseudo,:id)';
 			$param = array(
                 	':d' => array($c->getDate(),PDO::PARAM_STR),
                	 	':contenu' => array($c->getContenu(),PDO::PARAM_STR),
                 	':pseudo' => array($c->getPseudo(),PDO::PARAM_STR),
+			':id' => array($n->getId(),PDO::PARAM_INT),
             		);
             		$this->con->executeQuery($query,$param);
 		}
 
 		//Objectif ; supprimer des commentaire de la BD par rapport à l'id d'une news
-		public function deleteNews(News $n){
-			$query = 'delete from commentaire where idNews =:id';
+		public function deleteCom(News $n){
+			$query = 'delete from commentaire where idNews=:id';
 			$param = array(
                 	':id' => array($n->getId(),PDO::PARAM_INT),
 			);

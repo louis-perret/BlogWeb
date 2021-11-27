@@ -10,10 +10,7 @@
 			$this->date=$date;
 			$this->contenu=$contenu;
 			$this->listeCommentaire=[];
-			if (isset($pseudo))
-			{
-				$this->pseudo = $pseudo;
-			}
+			$this->pseudo = $pseudo;
 		}
 
 		//Getter
