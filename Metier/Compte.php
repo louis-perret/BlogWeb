@@ -1,34 +1,33 @@
 <?php
-class Compte
-{
-	private $username;
-	private $password;
-	private $estConnecte; 
+	/* Classe permettant de représenter le compte de l'administrateur du blog*/
+	class Compte
+	{
+		private $username;
+		private $password;
 
-	function __construct(string $username, string $password){
-			$this->username=$username;
-			$this->password=$password;
-			$this->estConnecte=true; //Si un objet Compte est créé cela veut dire qu'il est connecté, donc true
+		function __construct(string $username, string $password){
+				$this->username=$username;
+				$this->password=$password;
+			}
+
+		function getUsername()
+		{
+			return $this->username;
 		}
 
-	function getUsername()
-	{
-		return $this->username;
-	}
+		function getPassword()
+		{
+			return $this->password;
+		}
 
-	function getPassword()
-	{
-		return $this->password;
-	}
+		function setUsername( string $username)
+		{
+				$this->username = $username;
+		}
 
-	function setUsername( string $username)
-	{
-			$this->username = $username;
+		function setPassword (string $password)
+		{
+				$this->password = $password;
+		}
 	}
-
-	function setPassword (string $password)
-	{
-			$this->password = $password;
-	}
-}
 ?>

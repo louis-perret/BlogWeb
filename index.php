@@ -9,6 +9,6 @@
 		<?php //include("Vues/commentaires.php"); ?>
 		<?php //include("Vues/pagePrincipale.php"); ?>
 		<?php //require("scriptAfficherParPage.php"); ?>
-		<?php require("Tests/testGWCom.php"); ?>
+		<?php require("Tests/tests.php"); ?>
 	</body>
 </html>

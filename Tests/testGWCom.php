@@ -4,7 +4,7 @@
 	require_once("DAL/CommentaireGateway.php");
 	require_once("DAL/newsGateway.php");
 	require_once("DAL/Connexion.php");
-        $login="juduteyrat";
+    $login="juduteyrat";
 	$password="JeanMutilation_2";
 	$dsn="mysql:host=berlin.iut.local;dbname=dbjuduteyrat";
 	$c = new Connexion($dsn,$login,$password);

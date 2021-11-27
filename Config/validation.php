@@ -16,7 +16,7 @@ class Validation
 		return true;
 	}
 
-	//Objectif : Vérifie si le titre,contenu ne sont ni nuls, ni vide et "bien nettoyé". Vérifie si l'image est bien nettoyé.
+	//Objectif : Vérifie si le titre,contenu ne sont ni nuls, ni vide et "bien nettoyé". Vérifie si l'image est bien nettoyée.
 	public static function verifierNews (string &$titre, string &$contenu, $cheminImage, &$vueErreur)
 	{
 		if(!self::verifierChaine($titre))
@@ -33,7 +33,7 @@ class Validation
 
 		if($cheminImage != filter_var($cheminImage,FILTER_SANITIZE_STRING))
 		{
-			$vueErreur[] = 'Chemin image correct';
+			$vueErreur[] = 'Chemin image incorrect';
 			$cheminImage = "";
 		}
 		

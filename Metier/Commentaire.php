@@ -1,15 +1,14 @@
 <?php
+	/* Classe permettant de représenter un commentaire du blog*/
 	class Commentaire
 	{
 		private $date;
 		private $contenu;
 		private $pseudo;
-		//private array $listeCommentaire; //Tableau de commentaires
 
 		public function __construct(string $date, string $contenu, string $pseudo){
 			$this->date=$date;
 			$this->contenu=$contenu;
-			$this->listeCommentaire=[];
 			$this->pseudo = $pseudo;
 		}
 
@@ -27,10 +26,6 @@
 			return $this->pseudo;
 		}
 
-		/*public function getCommentaires(){
-			return $this->listeCommentaire;
-		}*/
-
 		//setter
 
 		public function setDate(string $date){
@@ -44,9 +39,5 @@
 		public function setPseudo(string $pseudo){
 			$this->pseudo=$pseudo;
 		}
-
-		/*public function ajouterCommentaire(Commentaire $c){
-			$this->listeCommentaire[]=$c;
-		}*/
 	}
 ?>

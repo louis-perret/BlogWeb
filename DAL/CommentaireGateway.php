@@ -10,25 +10,25 @@
 			$this->con = $con;
 		}
 		
-		//Objectif : insérer un commentaire dans la BD
+		//Objectif : Insérer un commentaire dans la BD
 		public function insertCom(Commentaire $c, News $n){
 			$query = 'insert into commentaire(date,contenu,pseudo,idNews) Values(STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:pseudo,:id)';
 			$param = array(
                 	':d' => array($c->getDate(),PDO::PARAM_STR),
                	 	':contenu' => array($c->getContenu(),PDO::PARAM_STR),
                 	':pseudo' => array($c->getPseudo(),PDO::PARAM_STR),
-			':id' => array($n->getId(),PDO::PARAM_INT),
+					':id' => array($n->getId(),PDO::PARAM_INT),
             		);
-            		$this->con->executeQuery($query,$param);
+            $this->con->executeQuery($query,$param);
 		}
 
-		//Objectif ; supprimer des commentaire de la BD par rapport à l'id d'une news
+		//Objectif : Supprimer des commentaire de la BD par rapport à l'id d'une news
 		public function deleteCom(News $n){
 			$query = 'delete from commentaire where idNews=:id';
 			$param = array(
                 	':id' => array($n->getId(),PDO::PARAM_INT),
 			);
-		        $this->con->executeQuery($query,$param);
+		    $this->con->executeQuery($query,$param);
 		}
 
 		//Objectif : Récupérer tout les commentaires par rapport à une news
@@ -49,11 +49,11 @@
 				
 		}
 
-		//Objectif : obtenir le nombre total de commentaire
+		//Objectif : Obtenir le nombre total de commentaires
 		public function getComNumber() {
 			$query = "select count(*) from commentaire";
 			$this->con->executeQuery($query,[]);
 			$res=$this->con->getResults();
-			return $res;
+			return $res[0][0];
 		}
 }

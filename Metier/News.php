@@ -59,6 +59,10 @@
 		}
 
 		/*Setter */
+
+		public function setId($id){
+			$this->id=$id;
+		}
 		public function setDate($date){
 			$this->date=$date;
 		}

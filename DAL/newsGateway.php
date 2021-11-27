@@ -1,5 +1,5 @@
 <?php
-	require_once('Metier/News.php');
+	//require_once('Metier/News.php');
 
 	class NewsGateway{
 
@@ -93,6 +93,22 @@
 
 			$res=$this->con->getResults();
 			return $res[0][0];
+		}
+
+		//Objectif : Récupérer l'id d'une news dans la base par rapport à son titre 
+		//-> Utile car son id est automatiquement généré dans la base donc il faut le récupérer
+		public function getIdNews($titre){
+			$query = "select id from News where titre=:t";
+			$param=array(
+				':t' => array($titre,PDO::PARAM_STR),
+			);
+
+			$this->con->executeQuery($query,$param);
+			$res=$this->con->getResults();
+			if(count($res)!=0){
+				return $res[0][0];
+			}
+			return -1; //La news n'existe pas		
 		}
 	}
 ?>

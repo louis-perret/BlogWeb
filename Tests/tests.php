@@ -9,11 +9,11 @@
 	<body>
 		<h1>Tests</h1>
 		<?php
-			require_once('../Config/Validation.php');
-			require_once("../Config/config.php");
-			require_once("../Metier/News.php");
-			require_once("../DAL/NewsGateway.php");
-
+			require_once('Config/Validation.php');
+			require_once("Config/config.php");
+			require_once("Metier/News.php");
+			require_once("DAL/NewsGateway.php");
+			require_once("DAL/CommentaireGateway.php");
 			$titre="Bientôt Noël";
 			$n=new News(20,date('Y-m-d'),$titre,"Après Hallowen, ma fête préférée fait bientôt son grand retour après bientôt un an d'absence !","",[]);
 
@@ -32,8 +32,8 @@
 			            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Forig00.deviantart.net%2F74ee%2Ff%2F2011%2F218%2F5%2F9%2Fhatsune_miku___po_pi_po_dance_by_teamvocaloid-d45mqil.gif&f=1&nofb=1",[]);
 			            $newsGateway->insertNews($n);//Fonctionne  
 			        }*/
-					/*$titre="Summer holyday";
-					$contenu="Dreamcatcher revient en force avec leur nouvel album. Ambiance d'été garantie ! Personnellement ma musique préférée est whistle. Would you stay with me whistle whistle";
+					$titre="Summer holyday";
+					/*$contenu="Dreamcatcher revient en force avec leur nouvel album. Ambiance d'été garantie ! Personnellement ma musique préférée est whistle. Would you stay with me whistle whistle";
 					$image="https://www.taiyou.fr/an_content/_upload/img-prod/46247/3_1.jpg";
 					$n=new News(20,date('Y-m-d'),$titre,$contenu,$image,[]);*/
 
@@ -66,6 +66,13 @@
 					foreach($tabNews as $n){
 						echo($n);
 					}*/
+
+					$id=$newsGateway->getIdNews($titre);
+					echo($id);
+
+					$cgw = new CommentaireGateway($c);
+					$num = $cgw->getComNumber();
+					echo($num);
 				}
 				catch(PDOException $e){
 					$tabErreur[]="Problème dans l'exécution des requêtes";
