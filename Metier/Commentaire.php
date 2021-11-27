@@ -6,10 +6,14 @@
 		private $pseudo;
 		//private array $listeCommentaire; //Tableau de commentaires
 
-		public function __construct(string $date, string $contenu){
+		public function __construct(string $date, string $contenu, string $pseudo){
 			$this->date=$date;
 			$this->contenu=$contenu;
 			$this->listeCommentaire=[];
+			if (isset($pseudo))
+			{
+				$this->pseudo = $pseudo;
+			}
 		}
 
 		//Getter
