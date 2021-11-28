@@ -1,5 +1,5 @@
 <?php
-	//require_once('Metier/News.php');
+	require_once('Metier/News.php');
 
 	class NewsGateway{
 
@@ -11,12 +11,11 @@
 
 		//Objectif : insérer une news dans la BD
 		public function insertNews(News $n){
-			$query = 'insert into News(titre,date,contenu,image) Values(:titre,STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:image)';
+			$query = 'insert into News(titre,date,contenu) Values(:titre,STR_TO_DATE(:d,"%Y-%m-%d"),:contenu)';
 			$param = array(
                 ':titre' => array($n->getTitre(),PDO::PARAM_STR),
                 ':d' => array($n->getDate(),PDO::PARAM_STR),
                 ':contenu' => array($n->getContenu(),PDO::PARAM_STR),
-                ':image' => array($n->getImage(),PDO::PARAM_STR),
             );
             $this->con->executeQuery($query,$param);
 		}
@@ -44,7 +43,7 @@
 
 			$tabNews=[];
 			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],$res[$key]['image'],[]);
+				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
 			}
 			return $tabNews;
 				
@@ -62,7 +61,7 @@
 
 			$tabNews=[];
 			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],$res[$key]['image'],[]);
+				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
 			}
 			return $tabNews;	
 		}
@@ -81,7 +80,7 @@
 			$res=$this->con->getResults();
 			$tabNews=[];
 			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],$res[$key]['image'],[]);
+				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
 			}
 			return $tabNews;
 		}

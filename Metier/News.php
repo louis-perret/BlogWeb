@@ -5,7 +5,6 @@
 		private $date; //Sa date de publication
 		private $titre; //Son titre
 		private $contenu; //Son contenu
-		private $image;
 		private $tabCommentaires = [];
 
 		/* 
@@ -17,17 +16,11 @@
 				contenu -> son contenu
 			-Sortie : aucun
 		*/
-		function __construct(int $id,string $date,string $titre,string $contenu,$image, array $tabCommentaires){
+		function __construct(int $id,string $date,string $titre,string $contenu, array $tabCommentaires){
 			$this->id=$id;
 			$this->date=$date;
 			$this->titre=$titre;
 			$this->contenu=$contenu;
-			if(!isset($image)){
-				$this->image="";
-			}
-			else{
-				$this->image=$image;
-			}
 			$this->tabCommentaires=$tabCommentaires; //On initialise sa liste de commentaires
 		}
 
@@ -48,10 +41,6 @@
 
 		public function getContenu(){
 			return $this->contenu;
-		}
-
-		public function getImage(){
-			return $this->image;
 		}
 
 		public function getCommentaires(){
@@ -75,21 +64,13 @@
 			$this->contenu=$contenu;
 		}
 
-		public function setImage($image){
-			$this->image=$image;
-		}
-
-
-
 		public function ajouterCommentaire(Commentaire $c){
 			$this->tabCommentaires[]=$c;
 		}
 
 		/* Renvoie l'instance sous forme de chaîne de caractères */
 		public function __toString(){
-			/* Méthode pas trop dégueulasse d'afficher proprement en HTML -> à exploiter plus en pronfondeur avec le CSS */
 			return "<p>Publié le : {$this->getDate()}</p> <h3> {$this->getTitre()} </h3> <p> {$this->getContenu()} </p>";
-			#return 'A été publiée le : '.$this->date." {$this->titre} <BR>{$this->contenu}";
 		}
 	}
 ?>

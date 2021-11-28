@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <!-- Menu -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=" width="5%" height="5%"/>
+          <img src="Images/PhotoProfil.jpg" width="5%" height="5%"/>
 
           <div class="navbar-collapse" id="navbarSupportedContent">
             <ul class="mr-auto">
@@ -24,8 +24,8 @@
                     Nombre de messages
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <p class="dropdown-item"> Blog : <?= 20 //A changer plus tard (à titre d'exemple)?></p>
-                    <p class="dropdown-item"> Personnels : <?= 10 //A changer plus tard (à titre d'exemple)?></p>
+                    <p class="dropdown-item"> Blog : <?= ""//Obtenu avec la BD?></p>
+                    <p class="dropdown-item"> Personnels : <?="" //Obtenu avec un cookie?></p>
                     <div class="dropdown-divider"></div>
                   </div>
               </li>
@@ -49,7 +49,7 @@
             </form>
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
               if(!$estConnecte) : //Quand il sera déconnecté ?> 
-                <form action=""> <!-- Pour qu'un bouton fonctionne il faut le mettre dans un formulaire -->
+                <form action="">
                   <button type="submit" class="btn btn-outline-info" style="margin: 10px;">Se connecter</button>
                 </form>
             <?php else : //Quand il sera connecté ?> 

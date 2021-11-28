@@ -15,7 +15,7 @@
 			require_once("DAL/NewsGateway.php");
 			require_once("DAL/CommentaireGateway.php");
 			$titre="Bientôt Noël";
-			$n=new News(20,date('Y-m-d'),$titre,"Après Hallowen, ma fête préférée fait bientôt son grand retour après bientôt un an d'absence !","",[]);
+			$n=new News(20,date('Y-m-d'),$titre,"Après Hallowen, ma fête préférée fait bientôt son grand retour après bientôt un an d'absence !",[]);
 
 			echo "$n";
 
@@ -29,17 +29,16 @@
 			            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 			            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 			            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Forig00.deviantart.net%2F74ee%2Ff%2F2011%2F218%2F5%2F9%2Fhatsune_miku___po_pi_po_dance_by_teamvocaloid-d45mqil.gif&f=1&nofb=1",[]);
+			            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",[]);
 			            $newsGateway->insertNews($n);//Fonctionne  
 			        }*/
 					$titre="Summer holyday";
-					/*$contenu="Dreamcatcher revient en force avec leur nouvel album. Ambiance d'été garantie ! Personnellement ma musique préférée est whistle. Would you stay with me whistle whistle";
-					$image="https://www.taiyou.fr/an_content/_upload/img-prod/46247/3_1.jpg";
-					$n=new News(20,date('Y-m-d'),$titre,$contenu,$image,[]);*/
-
+					$contenu="Dreamcatcher revient en force avec leur nouvel album. Ambiance d'été garantie ! Personnellement ma musique préférée est whistle. Would you stay with me whistle whistle";
+					$n=new News(20,date('Y-m-d'),$titre,$contenu,[]);
+					$newsGateway->insertNews($n);
 					
-					/*$tabNews=[];
-					$tabNews=$newsGateway->getNewsByTitre('Bientôt Noël'); //Fonctionne
+					$tabNews=[];
+					$tabNews=$newsGateway->getNewsByTitre('Summer holyday'); //Fonctionne
 
 					echo("<h1>News par titre : <br></h1>");
 					foreach($tabNews as $n){
@@ -60,7 +59,7 @@
 					//$newsGateway->deleteNews($n);//Fonctionne
 
 					echo("<h1>News par page : <br></h1>");
-					$numPage=1;
+					/*$numPage=1;
 					$nbNews=10;
 					$tabNews=$newsGateway->findByPage($numPage,$nbNews);
 					foreach($tabNews as $n){
@@ -76,7 +75,7 @@
 				}
 				catch(PDOException $e){
 					$tabErreur[]="Problème dans l'exécution des requêtes";
-					require('../Vues/erreur.php');
+					require('Vues/erreur.php');
 				}
 
 			}

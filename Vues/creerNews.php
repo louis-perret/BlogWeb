@@ -13,20 +13,19 @@
   </head>
   <body>
     <?php require('header.php'); ?>
-    <!-- Contient seulement le formulaire de crétion de la news -->
+    <!-- Contient seulement le formulaire de création de la news -->
     <div class="container">
-      <form method="post" action="../scriptCreation.php"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
+      <form method="post" action=""> <!--Faudra spécifier une action pour le contrôleur plus tard-->
         <div>
           <div class="form-group">
-            <label>titre</label>
+            <label>Titre</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title">
           </div>
           <div class="mb-3">
-            <label>contenu</label>
+            <label>Contenu</label>
             	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
         </div>
-	<button class="btn btn-secondary">ajouter une image</button>
         <button type="submit" class="btn btn-primary">Poster</button>
       </form>
     </div>

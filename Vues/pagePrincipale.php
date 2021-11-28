@@ -17,7 +17,7 @@
                   <p/> <!-- Permet l'alignement -->
                 <?php endif; ?>
               </div>
-              <img src="<?=$news->getImage() ?>" class="bloc1" width="20%" />
+              
               <p style="text-align: justify;"><?=$news->getContenu() ?></p>
               <div style="clear: both;"> <!-- Permet de stopper le float --> </div>
               

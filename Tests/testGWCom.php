@@ -11,7 +11,7 @@
 	$cgw = new CommentaireGateway($c);
 	$ngw = new NewsGateway($c);
 	$com = new Commentaire("21-11-27","contenu","moi");
-	$n = new News(31,"21-11-27","titre","contenu","non",[]);
+	$n = new News(31,"21-11-27","titre","contenu",[]);
 	$ngw->insertNews($n);
 	$cgw->insertCom($com,$n);
 	$cgw->insertCom($com,$n);

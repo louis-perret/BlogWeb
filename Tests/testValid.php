@@ -12,7 +12,7 @@
 
 		$tabErreur=[];
 
-		Validation::verifierNews($titre,$contenu,null,$tabErreur);
+		Validation::verifierNews($titre,$contenu,$tabErreur);
 		if(count($tabErreur)==0){
 			print("News valide et nettoyée\n");
 		}
@@ -27,7 +27,7 @@
 
 		$tabErreur=[];
 
-		Validation::verifierNews($titre,$contenu,$cheminImage,$tabErreur);
+		Validation::verifierNews($titre,$contenu,$tabErreur);
 		if(count($tabErreur)==0){
 			print("News valide et nettoyée\n");
 		}
@@ -42,7 +42,7 @@
 
 		$tabErreur=[];
 
-		Validation::verifierNews($titre,$contenu,$cheminImage,$tabErreur);
+		Validation::verifierNews($titre,$contenu,$tabErreur);
 		if(count($tabErreur)==0){
 			print("News valide et nettoyée\n");
 		}
