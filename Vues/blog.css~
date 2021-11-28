@@ -75,5 +75,5 @@ li{
 }
 
 .content{
-	height: 200px;
+	height: 30%;
 }

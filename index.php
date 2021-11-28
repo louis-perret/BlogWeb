@@ -9,6 +9,7 @@
 		<?php //include("Vues/commentaires.php"); ?>
 		<?php //include("Vues/pagePrincipale.php"); ?>
 		<?php //require("scriptAfficherParPage.php"); ?>
-		<?php require("Tests/tests.php"); ?>
+		<?php //require("Tests/tests.php"); ?>
+		<?php require("Vues/creerNews.php") ?>
 	</body>
 </html>
