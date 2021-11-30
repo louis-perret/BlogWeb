@@ -34,8 +34,12 @@
     </div>
 
     <?php 
-      $pagePreced=$numPage-1;
-      $pageSuiv=$numPage+1;
+      //$pagePreced=$numPage-1;
+      //$pageSuiv=$numPage+1;
+
+      $pagePreced=0;
+      $pageSuiv=0;
+      $nbPagesMax=0;
     ?>
     <center>
       <div class="container" style="display: inline-flex; justify-content: center;">

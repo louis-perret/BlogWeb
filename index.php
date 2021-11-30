@@ -6,10 +6,17 @@
 		<title>Blog</title>
 	</head>
 	<body>
+		<?php require_once('Config/config.php'); ?>
 		<?php //include("Vues/commentaires.php"); ?>
-		<?php //include("Vues/pagePrincipale.php"); ?>
+		<?php //require("Vues/pagePrincipale.php"); ?>
 		<?php //require("scriptAfficherParPage.php"); ?>
-		<?php require("Tests/tests.php"); ?>
+		<?php //require("Tests/tests.php"); ?>
 		<?php //require("Vues/creerNews.php") ?>
+		<?php require_once("Controleurs/AdminControleur.php");
+
+		$AdminC=new AdminControleur();
+
+		?>
+
 	</body>
 </html>

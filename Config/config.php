@@ -17,7 +17,8 @@
 
 	$tabErreur=[];
 	try{
-		$c = new Connexion($dsn,$login,$password);
+		global $c;
+		$GLOBALS['c'] = new Connexion($dsn,$login,$password);
 	}
 	catch(PDOException $e){
 		$tabErreur[]='Problème de connexion à la base de données';

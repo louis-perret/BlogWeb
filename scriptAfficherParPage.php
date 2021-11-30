@@ -6,12 +6,12 @@
 	require_once('Config/Validation.php');
 
 	$nbNews_par_Page=10;
-	$totalPages=0;
+	$totalNews=0;
 
 	try{
 		$newsGateway=new NewsGateway($c);
-		$totalPages=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
-		$nbPagesMax=ceil($totalPages/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
+		$totalNews=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
+		$nbPagesMax=ceil($totalNews/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
 
 		$b=false;
 		if(isset($_GET['page'])){

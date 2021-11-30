@@ -33,14 +33,13 @@
             </ul>
 
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
-              $estConnecte=false;
+              $estConnecte=true;
               if(isset($compte)){ //Teste si un administrateur est connecté
                 $estConnecte=true;
               }
-              if($estConnecte) : ?> 
-                <form action="">
-                 <button type="button" class="btn btn-dark" style="margin: 10px;">Ajouter une news</button>
-                </form>
+              if($estConnecte) : ?>
+                
+                  <a href="index.php?action=afficherFormNews" class="btn btn-dark" style="margin: 10px;">Ajouter une news</a>
             <?php endif; ?>
 
             <form class="form-inline my-2 my-lg-0" action="">

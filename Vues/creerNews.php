@@ -15,7 +15,7 @@
     <?php require('header.php'); ?>
     <!-- Contient seulement le formulaire de création de la news -->
     <div class="container">
-      <form method="post" action=""> <!--Faudra spécifier une action pour le contrôleur plus tard-->
+      <form method="post" action="index.php?action=ajouterNews"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
         <div>
           <div class="form-group">
             <label>Titre</label>
@@ -23,7 +23,7 @@
           </div>
           <div class="mb-3">
             <label>Contenu</label>
-            	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="contenu"></textarea>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Poster</button>
