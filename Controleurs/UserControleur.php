@@ -15,15 +15,21 @@
 				}
 
 				switch ($action) {
-					case 'RechercherNews':
-						echo "bon 1";
+					case 'affichCom' :
+						$this->affichCom();
 						break;
-					default:
-						if(isset($_REQUEST['search_bar']))
+					case 'ajoutCom':
+						$this->ajoutCom();
+						break;
+					case NULL :
+						if(isset($_REQUEST['search_bar']))//la search bar ne renvoie pas d'action
 							$this->RechercherNews();
 						else
 							require("Vues/pagePrincipale.php");
 						break;
+					default :
+						$tabErreur = ['action invalide'];
+						require('Vues/erreur.php');
 				}
 			}
 			catch(Exception $e){
@@ -46,6 +52,30 @@
 				require('Vues/erreur.php');
 			}
 			
+		}
+		
+		public function affichCom(){
+			$tabErreur = [];
+			$id = $_REQUEST['id'];
+			$modele=new Modele();
+			$n = $modele->rechercheId($id);
+			require('Vues/commentaires.php');		
+		}
+
+		public function ajoutCom(){
+			$tabErreur = [];
+			$commentaire = $_REQUEST['com'];
+			$pseudo = $_REQUEST['pseudo'];
+			$idNews = $_REQUEST['id'];
+			if(Validation::verifierChaine($commentaire)){
+				$modele=new Modele();
+				$modele->ajoutCom($commentaire, $idNews);
+				require('Vues/commentaires.php');
+			}
+			else{
+				$tabErreur[]="Problème dans le commentaire";
+				require('Vues/erreur.php');
+			}
 		}
 	}
 ?>

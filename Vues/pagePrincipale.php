@@ -22,9 +22,8 @@
               <div style="clear: both;"> <!-- Permet de stopper le float --> </div>
               
               <div class="footerNews">
-                <a href="" style="padding-top: 30px"> &rarr;Afficher commentaire </a>
-                <form action="">
-                  <button type="button" class="btn btn-outline-primary" style="margin: 10px;">Ajouter commentaire</button>
+                <form method="post" action="index.php?action=affichCom&id=<?=$news->getId()?>">
+                  <button type="submit" class="btn btn-outline-primary" style="margin: 10px;">Ajouter commentaire</button>
                 </form>
               </div>
             </div>

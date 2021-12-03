@@ -43,15 +43,15 @@
 				</center>
 
     				<div class="col" id="sectionCom">
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="search" placeholder="Commenter" aria-label="Commenter">
+					<form class="form-inline my-2 my-lg-0" action="index.php?action=ajoutCom&id=<?=$n->getId()?>">
+						<input class="form-control mr-sm-2" type="search" placeholder="Commenter" aria-label="Commenter" name="com">
+						<input class="form-control mr-sm-2" type="search" placeholder="pseudo" aria-label="pseudo" name="pseudo">
             					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Poster</button>
 					</form>
 					<p text-align="center"><h2>Section Commentaire</h2></p>
 
       					<?php 
           					require_once('Metier/Commentaire.php');
-          					$tabCom=[]; //Tableau qui contient tous les commentaires de la news
           					foreach($tabCom as $com) : ?>
 							<div class="displayer">
 							<div class="container blocMain">
