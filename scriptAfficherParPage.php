@@ -9,7 +9,7 @@
 	$totalNews=0;
 
 	try{
-		$newsGateway=new NewsGateway($c);
+		$newsGateway=new NewsGateway($GLOBALS['c']);
 		$totalNews=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
 		$nbPagesMax=ceil($totalNews/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
 

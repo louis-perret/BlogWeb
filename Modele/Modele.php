@@ -18,5 +18,10 @@
 			$tabnews = $nGT->getNewsByTitre($recherche);
 			return $tabnews;
 		}
+
+		public function supprimerNews($id){
+			$nGT = new NewsGateway($GLOBALS['c']);
+			$nGT->deleteNews($id);
+		}
 	}
 ?>

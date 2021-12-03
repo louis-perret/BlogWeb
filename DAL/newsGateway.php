@@ -21,10 +21,10 @@
 		}
 
 		//Objectif ; supprimer une news de la BD par rapport à son id
-		public function deleteNews(News $n){
+		public function deleteNews(int $id){
 			$query = 'delete from News where id=:id';
 			$param = array(
-                ':id' => array($n->getId(),PDO::PARAM_INT),
+                ':id' => array($id,PDO::PARAM_INT),
  
             );
 
