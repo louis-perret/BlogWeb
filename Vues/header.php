@@ -42,8 +42,8 @@
                   <a href="index.php?action=afficherFormNews" class="btn btn-dark" style="margin: 10px;">Ajouter une news</a>
             <?php endif; ?>
 
-            <form class="form-inline my-2 my-lg-0" action="">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="index.php?action=RechercherNews">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_bar">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */

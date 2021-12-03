@@ -13,9 +13,9 @@
 		<?php //require("Tests/tests.php"); ?>
 		<?php //require("Vues/creerNews.php") ?>
 		<?php require_once("Controleurs/AdminControleur.php");
-
+		//require_once("Controleurs/UserControleur.php");
 		$AdminC=new AdminControleur();
-
+		//$UserC = new UserControleur();
 		?>
 
 	</body>

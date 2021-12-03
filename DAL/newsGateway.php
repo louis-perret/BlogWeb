@@ -33,7 +33,7 @@
 
 		//Objectif : Récupérer toutes les news par rapport à un titre
 		public function getNewsByTitre($titre){
-			$query = "select * from News where titre=:t Order by(date) DESC";
+			$query = "select * from News where titre=:t Order by date";
 			$param=array(
 				':t' => array($titre,PDO::PARAM_STR),
 			);
