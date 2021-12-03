@@ -10,7 +10,7 @@
                 <p class="header"><?=$news->getDate() ?> </p>
                 <h3><?=$news->getTitre() ?> </h3>
                 <?php if($estConnecte) : ?> 
-                  <form action="">
+                  <form method="post" action="index.php?action=supprimerNews&id=<?=$news->getId()?>">
                     <button type="submit" class="btn btn-outline-dark" style="margin: 10px;">Effacer</button>
                   </form>
                 <?php else : ?>
@@ -33,12 +33,12 @@
     </div>
 
     <?php 
-      //$pagePreced=$numPage-1;
-      //$pageSuiv=$numPage+1;
+      $pagePreced=$numPage-1;
+      $pageSuiv=$numPage+1;
 
-      $pagePreced=0;
-      $pageSuiv=0;
-      $nbPagesMax=0;
+      //$pagePreced=0;
+      //$pageSuiv=0;
+      //$nbPagesMax=0;
     ?>
     <center>
       <div class="container" style="display: inline-flex; justify-content: center;">

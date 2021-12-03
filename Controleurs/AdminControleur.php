@@ -15,6 +15,10 @@
 				}
 
 				switch ($action) {
+
+					case NULL:
+						$this->afficherNews();
+						break;
 					case 'afficherFormNews':
 						$this->afficherFormNews();
 						break;
@@ -22,14 +26,23 @@
 					case 'ajouterNews':
 						$this->ajouterNews();
 						break;
-					default:
+
+					case 'supprimerNews':
+						$this->supprimerNews();
 						break;
+					default:
+						$tabErreur[]='Erreur';
+						require('Vues/erreur.php');
 				}
 			}
 			catch(Exception $e){
 				$tabErreur[]='Erreur';
 				require('Vues/erreur.php');
 			}
+		}
+
+		public function afficherNews(){
+			require('scriptAfficherParPage.php');
 		}
 
 		public function afficherFormNews(){
@@ -52,6 +65,13 @@
 				require('Vues/erreur.php');
 			}
 			
+		}
+
+		public function supprimerNews(){
+			$id=$_REQUEST['id'];
+			$modele=new Modele();
+			$modele->supprimerNews($id);
+			$this->afficherNews();
 		}
 	}
 ?>
