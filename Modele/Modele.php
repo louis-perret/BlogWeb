@@ -23,5 +23,11 @@
 			$nGT = new NewsGateway($GLOBALS['c']);
 			$nGT->deleteNews($id);
 		}
+
+		public function rechercheId($id){
+			$nGT = new NewsGateway($GLOBALS['c']);
+			$n = $nGT->getNewsById($id);
+			return $n;		
+		}
 	}
 ?>

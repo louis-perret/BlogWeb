@@ -109,5 +109,22 @@
 			}
 			return -1; //La news n'existe pas		
 		}
+
+		public function getNewsById($id){
+			$query = "select * from News where id=:id Order by date";
+			$param=array(
+				':id' => array($id,PDO::PARAM_STR),
+			);
+
+			$this->con->executeQuery($query,$param);
+			$res=$this->con->getResults();
+
+			$tabNews;
+			foreach ($res as $key => $value) {
+				$tabNews=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
+			}
+			return $tabNews;
+				
+		}
 	}
 ?>
