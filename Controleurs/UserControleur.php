@@ -1,7 +1,4 @@
 <?php
-	
-	require_once('Config/validation.php');
-	require_once('Modele/Modele.php');
 	class UserControleur{
 
 
@@ -25,7 +22,7 @@
 						if(isset($_REQUEST['search_bar']))//la search bar ne renvoie pas d'action
 							$this->RechercherNews();
 						else
-							require("Vues/pagePrincipale.php");
+							require('scriptAfficherParPage.php');
 						break;
 					default :
 						$tabErreur = ['action invalide'];

@@ -1,6 +1,5 @@
 <?php
-
-	public class Autolad{
+	class Autoload{
 
 	 	private static $_instance = null;
 

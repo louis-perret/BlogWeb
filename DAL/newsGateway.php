@@ -69,7 +69,7 @@
 		//Objectif : Récupérer x news par rapport au numéro de page
 		public function findByPage($numPage,$nbNews){
 			$borneInf=($numPage-1)*$nbNews;
-			$query="select * from news ORDER BY(date) DESC LIMIT :borneInf,:nbNews";
+			$query="select * from News ORDER BY(date) DESC LIMIT :borneInf,:nbNews";
 			$param=array(
 				":borneInf" => array($borneInf,PDO::PARAM_INT),
 				":nbNews" => array($nbNews,PDO::PARAM_INT),

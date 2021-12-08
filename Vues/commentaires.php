@@ -16,7 +16,6 @@
 		<div class="wrapper">
 		<?php require('header.php'); ?>
 		<?php 
-			require_once('Metier/News.php');
 			if(isset($n)) : ?>
 		<div class="container-fluid">
 				<center>
@@ -49,9 +48,8 @@
             					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Poster</button>
 					</form>
 					<p text-align="center"><h2>Section Commentaire</h2></p>
-
-      					<?php 
-          					require_once('Metier/Commentaire.php');
+					
+      					<?php if (isset($tabCom)) :
           					foreach($tabCom as $com) : ?>
 							<div class="displayer">
 							<div class="container blocMain">
@@ -64,7 +62,7 @@
           						</div>
 							<img src="Images/PhotoProfil.jpg" width="5%" height="5%">
 							</div>
-        					<?php endforeach; ?>
+        					<?php endforeach; endif;?>
     				</div>
 		</div>
 		
