@@ -26,11 +26,10 @@
 			return $n;		
 		}
 
-		public function ajoutCom ($com, $id){
+		public function ajoutCom ($com, $pseudo, $id){
 			$cGT = new CommentaireGateway($GLOBALS['c']);
-			$c = new Commentaire();
+			$c = new Commentaire(date('Y-m-d H:i:s'), $com, $pseudo);
 			$cGT->insertCom($c,$id);
-			return $cGT->getCommentairesByNews($id);
 		}
 		public function totalNews(){
 			$nGT = new NewsGateway($GLOBALS['c']);
@@ -39,6 +38,10 @@
 		public function findByPage($numPage,$nbNews_par_Page){
 			$nGT = new NewsGateway($GLOBALS['c']);
 			return  $nGT->findByPage($numPage,$nbNews_par_Page);
+		}
+		public function getComById ($id){
+			$cGT = new CommentaireGateway($GLOBALS['c']);
+			return $cGT->getCommentairesByNews($id);
 		}
 	}
 ?>

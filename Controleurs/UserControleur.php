@@ -3,7 +3,7 @@
 
 
 		public function __construct(){
-			try{
+			//try{
 				if(isset($_REQUEST['action'])){
 					$action=$_REQUEST['action'];
 				}
@@ -27,11 +27,11 @@
 						$tabErreur = ['action invalide'];
 						require('Vues/erreur.php');
 				}
-			}
-			catch(Exception $e){
-				$tabErreur[]='Erreur';
-				require('Vues/erreur.php');
-			}
+			//}
+			//catch(Exception $e){
+			//	$tabErreur[]='Erreur';
+			//	require('Vues/erreur.php');
+			//}
 		}
 
 		public function pageParPage()
@@ -78,6 +78,7 @@
 			$id = $_REQUEST['id'];
 			$modele=new Modele();
 			$n = $modele->rechercheId($id);
+			$tabCom = $modele->getComById($id);
 			require('Vues/commentaires.php');		
 		}
 
@@ -88,8 +89,8 @@
 			$idNews = $_REQUEST['id'];
 			if(Validation::verifierChaine($commentaire)){
 				$modele=new Modele();
-				$tabCom = $modele->ajoutCom($commentaire, $idNews);
-				require('Vues/commentaires.php');
+				$modele->ajoutCom($commentaire, $pseudo, $idNews);
+				$this->affichCom();
 			}
 			else{
 				$tabErreur[]="Problème dans le commentaire";

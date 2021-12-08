@@ -12,7 +12,7 @@
 		
 		//Objectif : Insérer un commentaire dans la BD
 		public function insertCom(Commentaire $c, $id){
-			$query = 'insert into commentaire(date,contenu,pseudo,idNews) Values(STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:pseudo,:id)';
+			$query = 'insert into commentaire(date,contenu,pseudo,idNews) Values(STR_TO_DATE(:d,"%Y-%m-%d %H:%i:%s"),:contenu,:pseudo,:id)';
 			$param = array(
                 	':d' => array($c->getDate(),PDO::PARAM_STR),
                	 	':contenu' => array($c->getContenu(),PDO::PARAM_STR),
