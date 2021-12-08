@@ -48,7 +48,7 @@
 			$b=false;
 			if(isset($_GET['page'])){
 				$numPage=$_GET['page'];
-				$b=validation::verifierPage($numPage,$nbPagesMax);
+				$b=Validation::verifierPage($numPage,$nbPagesMax);
 			}
 			if(!$b){ //Si le numéro est incorrecte
 				$numPage=1; //On va sur la première page 

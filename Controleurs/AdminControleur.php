@@ -1,7 +1,5 @@
 <?php
-	
-	require_once('Config/validation.php');
-	require_once('Modele/Modele.php');
+
 	class AdminControleur{
 
 
