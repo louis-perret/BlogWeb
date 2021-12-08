@@ -33,7 +33,7 @@
             </ul>
 
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
-              $estConnecte=true;
+              $estConnecte=false;
               if(isset($compte)){ //Teste si un administrateur est connecté
                 $estConnecte=true;
               }
@@ -48,9 +48,7 @@
             </form>
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
               if(!$estConnecte) : //Quand il sera déconnecté ?> 
-                <form action="">
-                  <button type="submit" class="btn btn-outline-info" style="margin: 10px;">Se connecter</button>
-                </form>
+                <a href="index.php?action=connexion" class="btn btn-outline-info" style="margin: 10px;">Se connecter</a>
             <?php else : //Quand il sera connecté ?> 
               <form action="">
                   <button  type="button" class="btn btn-outline-danger" style="margin: 10px;">Se déconnecter</button>

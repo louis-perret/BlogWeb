@@ -52,8 +52,14 @@ class Validation
 	//Objectif : Vérifie si le login et le mot de passe rentrés ne sont ni vide, ni remplis d'espace
 	//Sera amménée à changer quand on verra la connexion en cours
 	public static function verifierConnexion(string $login, string $password, &$vueErreur){
-		if(!self::verifierChaine($login) || self::verifierChaine($password)){
+		if(!self::verifierChaine($login)){
 			$vueErreur[]='Saisie invalide';
+		}
+
+		else{
+			if(!self::verifierChaine($password)){
+				$vueErreur[]='Saisie invalide';
+			}
 		}
 	}
 

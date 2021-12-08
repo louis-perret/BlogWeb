@@ -1,6 +1,5 @@
 <?php
-
-	class AdminControleur{
+	class AdminControleur extends UserControleur{
 
 
 		public function __construct(){
@@ -28,6 +27,14 @@
 					case 'supprimerNews':
 						$this->supprimerNews();
 						break;
+
+					case 'connexion':
+						$this->afficherFormConnexion();
+						break;
+						
+					case 'seconnecter':
+						$this->connexion();
+						break;
 					default:
 						$tabErreur[]='Erreur';
 						require('Vues/erreur.php');
@@ -40,7 +47,7 @@
 		}
 
 		public function afficherNews(){
-			require('scriptAfficherParPage.php');
+			parent::pageParPage();
 		}
 
 		public function afficherFormNews(){
@@ -70,6 +77,37 @@
 			$modele=new Modele();
 			$modele->supprimerNews($id);
 			$this->afficherNews();
+		}
+
+
+		public function afficherFormConnexion(){
+			require('Vues/pageConnexion.php');
+		}
+
+
+		public function connexion(){
+			$loginAdmin=$_REQUEST['login'];
+			$passwordAdmin=$_REQUEST['password'];
+		    $tabErreur=[];
+
+		    Validation::verifierConnexion($loginAdmin,$passwordAdmin,$tabErreur);
+		            
+		    if(count($tabErreur)==0){ //Si y'a pas eu d'erreurs
+		    	include('Config/config.php');
+		    	$c = new CompteGateway($c);
+		    	$compte=$c->getCompte($loginAdmin,$passwordAdmin);
+		    	if(isset($compte)){ //Si y'a un résultat
+		    		$this->afficherNews();
+		    	}
+		    	else{ 
+		    		$tabErreur[]='Pseudo ou mot de passe incorrect';
+		    		require('Vues/erreur.php');
+		    	}
+		    }
+		    else{
+		    	require('Vues/erreur.php');
+		    }
+			
 		}
 	}
 ?>

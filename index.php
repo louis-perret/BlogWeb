@@ -9,7 +9,8 @@
 		<?php require_once('Config/config.php'); ?>
 		<?php require_once('Config/Autoload.php');
 			Autoload::charger();?>		
-		<?php $UserC = new UserControleur();
+		<?php //$UserC = new UserControleur();
+			  $AdminC = new AdminControleur();
 		?>
 
 	</body>

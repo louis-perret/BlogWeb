@@ -15,7 +15,7 @@
     <?php require('header.php'); ?>
     <!-- Contient seulement le formulaire de connexion -->
     <div class="container">
-      <form method="post" action="../scriptConnexion.php"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
+      <form method="post" action="index.php?action=seconnecter"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
         <div>
           <div class="form-group">
             <label>Pseudo</label>
