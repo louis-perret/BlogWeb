@@ -15,14 +15,13 @@
 					case 'affichCom' :
 						$this->affichCom();
 						break;
-					case 'ajoutCom':
-						$this->ajoutCom();
-						break;
 					case NULL :
 						if(isset($_REQUEST['search_bar']))//la search bar ne renvoie pas d'action
 							$this->RechercherNews();
+						if(isset($_REQUEST['com']))
+							$this->ajoutCom();
 						else
-							require('scriptAfficherParPage.php');
+							$this->pageParPage();
 						break;
 					default :
 						$tabErreur = ['action invalide'];
@@ -35,6 +34,29 @@
 			}
 		}
 
+		public function pageParPage()
+		{
+			$nbNews_par_Page=10;
+			$totalNews=0;
+			/*
+			$newsGateway=new NewsGateway($GLOBALS['c']);
+			$totalNews=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
+			*/
+			$model = new Modele();
+			$totalNews = $model->totalNews();
+			$nbPagesMax=ceil($totalNews/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
+			$b=false;
+			if(isset($_GET['page'])){
+				$numPage=$_GET['page'];
+				$b=validation::verifierPage($numPage,$nbPagesMax);
+			}
+			if(!$b){ //Si le numéro est incorrecte
+				$numPage=1; //On va sur la première page 
+			}
+			$tabNews=$model->findByPage($numPage,$nbNews_par_Page); //On récupère les news pour la n-ième page
+			require('Vues/pagePrincipale.php');
+		}
+	
 		public function RechercherNews(){
 			$tabErreur = [];
 			$recherche=$_REQUEST['search_bar']; //On récupère les informations de la barre de recherche
@@ -66,7 +88,7 @@
 			$idNews = $_REQUEST['id'];
 			if(Validation::verifierChaine($commentaire)){
 				$modele=new Modele();
-				$modele->ajoutCom($commentaire, $idNews);
+				$tabCom = $modele->ajoutCom($commentaire, $idNews);
 				require('Vues/commentaires.php');
 			}
 			else{

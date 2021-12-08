@@ -11,13 +11,13 @@
 		}
 		
 		//Objectif : Insérer un commentaire dans la BD
-		public function insertCom(Commentaire $c, News $n){
+		public function insertCom(Commentaire $c, $id){
 			$query = 'insert into commentaire(date,contenu,pseudo,idNews) Values(STR_TO_DATE(:d,"%Y-%m-%d"),:contenu,:pseudo,:id)';
 			$param = array(
                 	':d' => array($c->getDate(),PDO::PARAM_STR),
                	 	':contenu' => array($c->getContenu(),PDO::PARAM_STR),
                 	':pseudo' => array($c->getPseudo(),PDO::PARAM_STR),
-					':id' => array($n->getId(),PDO::PARAM_INT),
+					':id' => array($id,PDO::PARAM_INT),
             		);
             $this->con->executeQuery($query,$param);
 		}
@@ -32,10 +32,10 @@
 		}
 
 		//Objectif : Récupérer tout les commentaires par rapport à une news
-		public function getCommentairesByNews(News $n){
+		public function getCommentairesByNews($id){
 			$query = "select * from commentaire where idNews = :id Order by(date) DESC";
 			$param=array(
-				':id' => array($n->getId(),PDO::PARAM_INT),
+				':id' => array($id,PDO::PARAM_INT),
 			);
 
 			$this->con->executeQuery($query,$param);

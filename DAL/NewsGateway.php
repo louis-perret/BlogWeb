@@ -1,5 +1,4 @@
 <?php
-	require_once('Metier/News.php');
 
 	class NewsGateway{
 

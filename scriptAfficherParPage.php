@@ -1,15 +1,9 @@
 <?php
-
-	//Sera mis dans un contrôleur plus tard
-	require_once('Config/config.php');
-	require_once('DAL/newsGateway.php');
-	require_once('Config/validation.php');
-
 	$nbNews_par_Page=10;
 	$totalNews=0;
 
 	//try{
-		$newsGateway=new newsGateway($GLOBALS['c']);
+		$newsGateway=new NewsGateway($GLOBALS['c']);
 		$totalNews=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
 		$nbPagesMax=ceil($totalNews/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
 		$b=false;

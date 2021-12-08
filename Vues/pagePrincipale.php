@@ -43,11 +43,11 @@
     <center>
       <div class="container" style="display: inline-flex; justify-content: center;">
         <?php if($pagePreced>0) : //Si on est pas à la première page ?> 
-          <a class="lien" href="scriptAfficherParPage.php?page=<?=$pagePreced ?>" style="color: black; margin: 5px;">page <?=$pagePreced?> &larr;</a>
+          <a class="lien" href="index.php?page=<?=$pagePreced ?>" style="color: black; margin: 5px;">page <?=$pagePreced?> &larr;</a>
           <p style="color: black; margin: 5px;">...</p>
         <?php endif; ?>
         <?php if($pageSuiv<=$nbPagesMax) : //Si on est pas à la dernière page ?>
-          <a class="lien" href="scriptAfficherParPage.php?page=<?=$pageSuiv ?>" style="color: black; margin: 5px;"> &rarr; page <?=$pageSuiv?></a>
+          <a class="lien" href="index.php?page=<?=$pageSuiv ?>" style="color: black; margin: 5px;"> &rarr; page <?=$pageSuiv?></a>
         <?php endif; ?>
       <div>
     </center>

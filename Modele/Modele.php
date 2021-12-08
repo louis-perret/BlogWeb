@@ -1,9 +1,5 @@
 <?php
 
-	require_once('Metier/News.php');
-	require_once('DAL/newsGateway.php');
-	//require_once('Config/config.php');
-	//Classe modèle pour news et commentaire et admin
 	class Modele{
 
 
@@ -28,6 +24,21 @@
 			$nGT = new NewsGateway($GLOBALS['c']);
 			$n = $nGT->getNewsById($id);
 			return $n;		
+		}
+
+		public function ajoutCom ($com, $id){
+			$cGT = new CommentaireGateway($GLOBALS['c']);
+			$c = new Commentaire();
+			$cGT->insertCom($c,$id);
+			return $cGT->getCommentairesByNews($id);
+		}
+		public function totalNews(){
+			$nGT = new NewsGateway($GLOBALS['c']);
+			return $nGT->getNbNews();
+		}
+		public function findByPage($numPage,$nbNews_par_Page){
+			$nGT = new NewsGateway($GLOBALS['c']);
+			return  $nGT->findByPage($numPage,$nbNews_par_Page);
 		}
 	}
 ?>

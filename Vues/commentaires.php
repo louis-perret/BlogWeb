@@ -42,9 +42,10 @@
 				</center>
 
     				<div class="col" id="sectionCom">
-					<form class="form-inline my-2 my-lg-0" action="index.php?action=ajoutCom&id=<?=$n->getId()?>">
+					<form class="form-inline my-2 my-lg-0" action="index.php">
 						<input class="form-control mr-sm-2" type="search" placeholder="Commenter" aria-label="Commenter" name="com">
 						<input class="form-control mr-sm-2" type="search" placeholder="pseudo" aria-label="pseudo" name="pseudo">
+						<input type="hidden" value=<?=$n->getId()?> name="id">
             					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Poster</button>
 					</form>
 					<p text-align="center"><h2>Section Commentaire</h2></p>

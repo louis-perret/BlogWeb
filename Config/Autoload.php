@@ -26,13 +26,13 @@
 
             	self::$_instance = null;
         	}	
-   	 	}
+   	 }
 
         private static function _autoload($class)
     	{	
 	        global $rep;
 	        $filename = $class.'.php';
-	        $dir =array('Modele/','./','Config/','Controleurs/','DAL','Metier','');
+	        $dir =array('Modele/','./','Config/','Controleurs/','DAL/','Metier/','');
 	        foreach ($dir as $d){
 		        $file=$rep.$d.$filename; 
 		        if (file_exists($file))
