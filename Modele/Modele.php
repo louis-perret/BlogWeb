@@ -43,5 +43,11 @@
 			$cGT = new CommentaireGateway($GLOBALS['c']);
 			return $cGT->getCommentairesByNews($id);
 		}
+
+		public function connexion($login,$password){
+			$c = new CompteGateway($GLOBALS['c']);
+		    $compte=$c->getCompte($login,$password);
+		    return $compte;
+		}
 	}
 ?>

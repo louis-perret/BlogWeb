@@ -33,10 +33,9 @@
     </div>
 
     <?php 
-      if(isset($pagePreced) && isset($pageSuiv)){
         $pagePreced=$numPage-1;
         $pageSuiv=$numPage+1;
-      }
+      
       //$pagePreced=0;
       //$pageSuiv=0;
       //$nbPagesMax=0;

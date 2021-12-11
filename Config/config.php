@@ -3,7 +3,7 @@
 	require_once("DAL/Connexion.php");
 
 	//Pour passer de l'un à l'autre, passer true à false
-	if(false){ //Pour louis
+	if(true){ //Pour louis
 		$login="root";
 		$password="_Moomoo/259";
 		$dsn="mysql:host=localhost;dbname=bdblog";

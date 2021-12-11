@@ -35,6 +35,10 @@
 					case 'seconnecter':
 						$this->connexion();
 						break;
+
+					case 'sedeconnecter':
+						$this->deconnexion();
+						break;
 					default:
 						$tabErreur[]='Erreur';
 						require('Vues/erreur.php');
@@ -93,10 +97,10 @@
 		    Validation::verifierConnexion($loginAdmin,$passwordAdmin,$tabErreur);
 		            
 		    if(count($tabErreur)==0){ //Si y'a pas eu d'erreurs
-		    	include('Config/config.php');
-		    	$c = new CompteGateway($c);
-		    	$compte=$c->getCompte($loginAdmin,$passwordAdmin);
+		    	$m = new Modele();
+		    	$compte=$m->connexion($loginAdmin,$passwordAdmin);
 		    	if(isset($compte)){ //Si y'a un résultat
+		    		$_SESSION['role']=true;
 		    		$this->afficherNews();
 		    	}
 		    	else{ 
@@ -108,6 +112,11 @@
 		    	require('Vues/erreur.php');
 		    }
 			
+		}
+
+		public function deconnexion(){
+			$_SESSION['role']=false;
+			$this->afficherNews();
 		}
 	}
 ?>

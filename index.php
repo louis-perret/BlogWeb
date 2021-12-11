@@ -9,7 +9,10 @@
 		<?php require_once('Config/config.php'); ?>
 		<?php require_once('Config/Autoload.php');
 			Autoload::charger();?>		
-		<?php //$UserC = new UserControleur();
+		<?php 
+			session_start(); //=> à mettre dans le front controller
+			//$_SESSION['role']=false; //par défaut à false 
+			//$UserC = new UserControleur();
 			  $AdminC = new AdminControleur();
 		?>
 
