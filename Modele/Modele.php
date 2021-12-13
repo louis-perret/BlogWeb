@@ -37,7 +37,7 @@
 		}
 		public function findByPage($numPage,$nbNews_par_Page){
 			$nGT = new NewsGateway($GLOBALS['c']);
-			return  $nGT->findByPage($numPage,$nbNews_par_Page);
+			return  $nGT->findByPage($numPage,$nbNews_par_Page);		
 		}
 		public function getComById ($id){
 			$cGT = new CommentaireGateway($GLOBALS['c']);

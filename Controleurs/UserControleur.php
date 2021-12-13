@@ -18,7 +18,7 @@
 					case NULL :
 						if(isset($_REQUEST['search_bar']))//la search bar ne renvoie pas d'action
 							$this->RechercherNews();
-						if(isset($_REQUEST['com']))
+						elseif(isset($_REQUEST['com']))
 							$this->ajoutCom();
 						else
 							$this->pageParPage();
@@ -57,6 +57,7 @@
 			require('Vues/pagePrincipale.php');
 		}
 	
+	
 		public function RechercherNews(){
 			$tabErreur = [];
 			$recherche=$_REQUEST['search_bar']; //On récupère les informations de la barre de recherche
@@ -64,6 +65,8 @@
 				
 				$modele=new Modele();
 				$tabNews = $modele->RechercherNews($recherche);
+				$numPage = 0;
+				$nbPagesMax = 0;
 				require('Vues/pagePrincipale.php');
 			}
 			else{
