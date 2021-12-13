@@ -1,28 +1,28 @@
 <?php
 
-	require_once("DAL/Connexion.php");
+global $login;
+global $password;
+global $dsn;
 
 	//Pour passer de l'un à l'autre, passer true à false
-	if(false){ //Pour louis
-		$login="root";
-		$password="_Moomoo/259";
-		$dsn="mysql:host=localhost;dbname=bdblog";
+	if(true){ //Pour louis
+		$GLOBALS['login']="root";
+		$GLOBALS['password']="_Moomoo/259";
+		$GLOBALS['dsn']="mysql:host=localhost;dbname=bdblog";
 	}
 
 	else{ //Pour Jules
-		$login="juduteyrat";
-		$password="JeanMutilation_2";
-		$dsn="mysql:host=berlin.iut.local;dbname=dbjuduteyrat";
+		$GLOBALS['login']="juduteyrat";
+		$GLOBALS['password']="JeanMutilation_2";
+		$GLOBALS['dsn']="mysql:host=berlin.iut.local;dbname=dbjuduteyrat";
 	}
 
 	$tabErreur=[];
-	try{
-		global $c;
-		$GLOBALS['c'] = new Connexion($dsn,$login,$password);
+	/*try{
+		$c = new Connexion($_GLOBAL['dsn'],$_GLOBAL['login'],$_GLOBAL['password']);
 	}
 	catch(PDOException $e){
 		$tabErreur[]='Problème de connexion à la base de données';
 		include('Vues/erreur.php');
-	}
-
+	}*/
 ?>

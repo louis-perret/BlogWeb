@@ -34,7 +34,7 @@
 		
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
               $estConnecte=false;
-		if(isset($_SESSION['role']))
+		            if(isset($_SESSION['role']))
               		if($_SESSION['role']) //Teste si un administrateur est connecté
                 		$estConnecte=true;
               if($estConnecte) : ?>
@@ -54,7 +54,9 @@
                   <a  href="index.php?action=sedeconnecter" class="btn btn-outline-danger" style="margin: 10px;">Se déconnecter</a>
               </form>
             <?php endif; ?>
-            <a class="maison" href="index.php"><img class="maison" src="Vues/maison.png"/></a>
+            <a href="index.php">
+              <img style="max-width: 50px;" src="Images/maison.png"/>
+            </a>
           </div>
         </nav>
       </div>

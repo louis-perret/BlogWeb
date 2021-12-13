@@ -4,9 +4,9 @@
 
 
 		public function connexion($login,$password){
-			$c = new CompteGateway($GLOBALS['c']);
-		    $compte=$c->getCompte($login);
-		    if($compte==null){ //Si y'a un résultat
+			$cgt = new CompteGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
+		    $compte=$cgt->getCompte($login);
+		    if($compte==null){ //Si y'a pas de résultat
 		    	throw new Exception("Login incorrecte");
 		    }
 
