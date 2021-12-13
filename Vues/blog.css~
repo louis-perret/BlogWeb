@@ -37,10 +37,6 @@ li{
 	justify-content: space-between;
 }
 
-.maison{
-	max-height: 50px;
-}
-
 .lien{
 	color: black;
 }

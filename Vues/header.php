@@ -31,7 +31,7 @@
               </li>
               
             </ul>
-
+		
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
               $estConnecte=false;
 		if(isset($_SESSION['role']))
@@ -54,7 +54,7 @@
                   <a  href="index.php?action=sedeconnecter" class="btn btn-outline-danger" style="margin: 10px;">Se déconnecter</a>
               </form>
             <?php endif; ?>
-            
+            <a class="maison" href="index.php"><img class="maison" src="Vues/maison.png"/></a>
           </div>
         </nav>
       </div>
