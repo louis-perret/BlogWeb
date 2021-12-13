@@ -13,12 +13,11 @@
 
 			//Objectif : Récupérer le compte admin
 			//Sera amméné à peut-être changer lorqu'on verra comment gérer une connexion en cours
-			public function getCompte(string $login, string $password)
+			public function getCompte(string $login)
 			{
-				$query="select * from admin where pseudo=:login and motDePasse=:password";
+				$query="select * from admin where pseudo=:login";
 				$param=array(
 					':login' => array($login,PDO::PARAM_STR),
-					':password' => array($password,PDO::PARAM_STR),
 				);
 
 				$rep=$this->con->executeQuery($query,$param);

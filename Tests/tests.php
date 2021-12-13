@@ -20,8 +20,8 @@
 			echo "$n";
 
 			if(true){ //Test de NewsGateway.php
-				try{
-					$newsGateway=new NewsGateway($c); //Fonctionne
+				try{/*
+					$newsGateway=new NewsGateway($c); //Fonctionne*/
 
 					/*for($i=0;$i<20;$i++){
 			            $n=new News(20,date('Y-m-d'),"Titre","Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -32,7 +32,7 @@
 			            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",[]);
 			            $newsGateway->insertNews($n);//Fonctionne  
 			        }*/
-					$titre="Summer holyday";
+					/*$titre="Summer holyday";
 					$contenu="Dreamcatcher revient en force avec leur nouvel album. Ambiance d'été garantie ! Personnellement ma musique préférée est whistle. Would you stay with me whistle whistle";
 					$n=new News(20,date('Y-m-d'),$titre,$contenu,[]);
 					$newsGateway->insertNews($n);
@@ -58,7 +58,7 @@
 		            
 					//$newsGateway->deleteNews($n);//Fonctionne
 
-					echo("<h1>News par page : <br></h1>");
+					echo("<h1>News par page : <br></h1>");*/
 					/*$numPage=1;
 					$nbNews=10;
 					$tabNews=$newsGateway->findByPage($numPage,$nbNews);
@@ -66,12 +66,12 @@
 						echo($n);
 					}*/
 
-					$id=$newsGateway->getIdNews($titre);
+					/*$id=$newsGateway->getIdNews($titre);
 					echo($id);
 
 					$cgw = new CommentaireGateway($c);
 					$num = $cgw->getComNumber();
-					echo($num);
+					echo($num);*/
 				}
 				catch(PDOException $e){
 					$tabErreur[]="Problème dans l'exécution des requêtes";

@@ -97,10 +97,9 @@
 		    Validation::verifierConnexion($loginAdmin,$passwordAdmin,$tabErreur);
 		            
 		    if(count($tabErreur)==0){ //Si y'a pas eu d'erreurs
-		    	$m = new Modele();
+		    	$m = new ModeleAdmin();
 		    	$compte=$m->connexion($loginAdmin,$passwordAdmin);
-		    	if(isset($compte)){ //Si y'a un résultat
-		    		$_SESSION['role']=true;
+		    	if($compte!=null){ //Si y'a un résultat
 		    		$this->afficherNews();
 		    	}
 		    	else{ 
@@ -115,7 +114,8 @@
 		}
 
 		public function deconnexion(){
-			$_SESSION['role']=false;
+			$m = new ModeleAdmin();
+			$m->deconnexion();
 			$this->afficherNews();
 		}
 	}
