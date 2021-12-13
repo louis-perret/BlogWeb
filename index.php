@@ -13,7 +13,7 @@
 			session_start(); //=> à mettre dans le front controller
 			//$_SESSION['role']=false; //par défaut à false 
 			//$UserC = new UserControleur();
-			  $AdminC = new AdminControleur();
+			new FrontControleur();
 		?>
 
 	</body>

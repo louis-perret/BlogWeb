@@ -34,9 +34,9 @@
 
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */
               $estConnecte=false;
-              if($_SESSION['role']){ //Teste si un administrateur est connecté
-                $estConnecte=true;
-              }
+		if(isset($_SESSION['role']))
+              		if($_SESSION['role']) //Teste si un administrateur est connecté
+                		$estConnecte=true;
               if($estConnecte) : ?>
                 
                   <a href="index.php?action=afficherFormNews" class="btn btn-dark" style="margin: 10px;">Ajouter une news</a>

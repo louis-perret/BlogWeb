@@ -40,12 +40,12 @@
 						$this->deconnexion();
 						break;
 					default:
-						$tabErreur[]='Erreur';
+						$tabErreur[]='action admin invalide';
 						require('Vues/erreur.php');
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]='Erreur';
+				$tabErreur[]=$e;
 				require('Vues/erreur.php');
 			}
 		}
@@ -67,7 +67,7 @@
 				
 				$modele=new Modele();
 				$modele->ajouterNews($titre,$contenu);
-				require('Vues/pagePrincipale.php');
+				$this->afficherNews();
 			}
 			else{
 				$tabErreur[]="Problème dans l'ajout d'une news";

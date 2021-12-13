@@ -3,7 +3,7 @@
 
 
 		public function __construct(){
-			//try{
+			try{
 				if(isset($_REQUEST['action'])){
 					$action=$_REQUEST['action'];
 				}
@@ -27,11 +27,11 @@
 						$tabErreur = ['action invalide'];
 						require('Vues/erreur.php');
 				}
-			//}
-			//catch(Exception $e){
-			//	$tabErreur[]='Erreur';
-			//	require('Vues/erreur.php');
-			//}
+			}
+			catch(Exception $e){
+				$tabErreur[]='Erreur dans l exécution de l action utilisateur';
+				require('Vues/erreur.php');
+			}
 		}
 
 		public function pageParPage()
