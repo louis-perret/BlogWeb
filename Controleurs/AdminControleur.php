@@ -45,7 +45,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]=$e;
+				$tabErreur[]='Erreur 404';
 				require('Vues/erreur.php');
 			}
 		}

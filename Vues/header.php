@@ -24,8 +24,8 @@
                     Nombre de messages
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <p class="dropdown-item"> Blog : <?= ""//Obtenu avec la BD?></p>
-                    <p class="dropdown-item"> Personnels : <?="" //Obtenu avec un cookie?></p>
+                    <p class="dropdown-item"> Blog : <?=$GLOBALS['nbComTotal']//Obtenu avec la BD?></p>
+                    <p class="dropdown-item"> Personnels : <?=$_COOKIE['nbCom'] //Obtenu avec un cookie?></p>
                     <div class="dropdown-divider"></div>
                   </div>
               </li>
@@ -40,7 +40,7 @@
               if($estConnecte) : ?>
                 
                   <a href="index.php?action=afficherFormNews" class="btn btn-dark" style="margin: 10px;">Ajouter une news</a>
-            <?php endif; ?>
+              <?php endif; ?>
 
             <form class="form-inline my-2 my-lg-0" action="index.php?action=RechercherNews">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_bar">

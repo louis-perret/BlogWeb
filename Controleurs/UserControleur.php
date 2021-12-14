@@ -29,7 +29,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]='Erreur dans l exécution de l action utilisateur';
+				$tabErreur[]="Erreur dans l'éxécution de l'action utilisateur";
 				require('Vues/erreur.php');
 			}
 		}
@@ -38,10 +38,6 @@
 		{
 			$nbNews_par_Page=10;
 			$totalNews=0;
-			/*
-			$newsGateway=new NewsGateway($GLOBALS['c']);
-			$totalNews=$newsGateway->getNbNews(); //On récupère le nombre de news total dans la base
-			*/
 			$model = new Modele();
 			$totalNews = $model->totalNews();
 			$nbPagesMax=ceil($totalNews/$nbNews_par_Page); //On calcul le nombre de pages totales possibles
@@ -53,6 +49,7 @@
 			if(!$b){ //Si le numéro est incorrecte
 				$numPage=1; //On va sur la première page 
 			}
+			$GLOBALS['nbComTotal']=$model->totalCommentaire();
 			$tabNews=$model->findByPage($numPage,$nbNews_par_Page); //On récupère les news pour la n-ième page
 			require('Vues/pagePrincipale.php');
 		}
@@ -90,13 +87,16 @@
 			$commentaire = $_REQUEST['com'];
 			$pseudo = $_REQUEST['pseudo'];
 			$idNews = $_REQUEST['id'];
-			if(Validation::verifierChaine($commentaire)){
+			Validation::verifierCommentaire($pseudo,$commentaire, $tabErreur);
+			if(count($tabErreur)==0){
 				$modele=new Modele();
 				$modele->ajoutCom($commentaire, $pseudo, $idNews);
+				$GLOBALS['nbComTotal']=$modele->totalCommentaire(); //On actualise
+				$_COOKIE['nbCom']=$_COOKIE['nbCom']+1; //On actualise
 				$this->affichCom();
 			}
 			else{
-				$tabErreur[]="Problème dans le commentaire";
+				$tabErreur[]="Problème dans la saisie du commentaire";
 				require('Vues/erreur.php');
 			}
 		}

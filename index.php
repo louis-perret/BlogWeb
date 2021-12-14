@@ -10,9 +10,11 @@
 		<?php require_once('Config/Autoload.php');
 			Autoload::charger();?>		
 		<?php 
-			session_start(); //=> à mettre dans le front controller
-			//$_SESSION['role']=false; //par défaut à false 
-			//$UserC = new UserControleur();
+			session_start(); //lance une session
+			if(!isset($_COOKIE['nbCom'])){ //Si l'utilisateur n'a pas de cookie 'nbCom'
+				setcookie('nbCom',0,time()+365*24*3600); //On le crée avec 0 comme valeur par défaut
+			}
+			
 			new FrontControleur();
 		?>
 
