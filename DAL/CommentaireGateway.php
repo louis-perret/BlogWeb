@@ -1,7 +1,6 @@
 <?php
-	require_once('Metier/Commentaire.php');
-	require_once('Metier/News.php');
 
+	//Fait le lien entre la classe Commentaire et la table Commentaire de la bd
 	class CommentaireGateway {
 	
 		private $con;
@@ -40,12 +39,7 @@
 
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
-
-			$tabCom=[];
-			foreach ($res as $key => $value) {
-				$tabCom[]=new Commentaire($res[$key]['date'],$res[$key]['contenu'],$res[$key]['pseudo']);
-			}
-			return $tabCom;
+			return DBFactory_Commentaire::creer($res,'mysql');
 				
 		}
 

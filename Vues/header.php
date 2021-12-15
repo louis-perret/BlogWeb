@@ -25,7 +25,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <p class="dropdown-item"> Blog : <?=$GLOBALS['nbComTotal']//Obtenu avec la BD?></p>
-                    <p class="dropdown-item"> Personnels : <?=$_COOKIE['nbCom'] //Obtenu avec un cookie?></p>
+                    <p class="dropdown-item"> Personnels : <?=$_COOKIE['nbCom']??0 //Obtenu avec un cookie?></p>
                     <div class="dropdown-divider"></div>
                   </div>
               </li>

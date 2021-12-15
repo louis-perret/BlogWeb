@@ -5,7 +5,7 @@
 		//$_instance = assure la singularité de l'instance
 	 	private static $_instance = null;
 
-	//objectif : créer une instance de autoload si il n'en existe pas afin de préserver la singularité
+	//objectif : créer une instance de autoload si il n'en existe pas afin de préserver la singularité (patron singleton)
         public static function charger()
     	{
         	if(null !== self::$_instance) {

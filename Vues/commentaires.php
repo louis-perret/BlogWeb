@@ -17,7 +17,8 @@
 		<?php require('header.php'); ?>
 		<?php 
 			if(isset($n)) : ?>
-		<div class="container-fluid">
+			<!-- Affiche la news avec ses commentaires -->
+			<div class="container-fluid">
 				<center>
 	   				<div class="col  blocMain newsContent">
 							<div class="container-fluid">

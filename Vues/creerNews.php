@@ -15,7 +15,7 @@
     <?php require('header.php'); ?>
     <!-- Contient seulement le formulaire de création de la news -->
     <div class="container">
-      <form method="post" action="index.php?action=ajouterNews"> <!--Faudra spécifier une action pour le contrôleur plus tard-->
+      <form method="post" action="index.php?action=ajouterNews"> 
         <div>
           <div class="form-group">
             <label>Titre</label>

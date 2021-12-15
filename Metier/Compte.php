@@ -5,27 +5,27 @@
 		private $username;
 		private $password;
 
-		function __construct(string $username, string $password){
+		public function __construct(string $username, string $password){
 				$this->username=$username;
 				$this->password=$password;
 			}
 
-		function getUsername()
+		public function getUsername()
 		{
 			return $this->username;
 		}
 
-		function getPassword()
+		public function getPassword()
 		{
 			return $this->password;
 		}
 
-		function setUsername( string $username)
+		public function setUsername( string $username)
 		{
 				$this->username = $username;
 		}
 
-		function setPassword (string $password)
+		public function setPassword (string $password)
 		{
 				$this->password = $password;
 		}

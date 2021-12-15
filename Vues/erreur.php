@@ -10,6 +10,7 @@
 		<title>Page d'erreur</title>
 	</head>
 	<body>
+		<!-- Vue d'erreur -->
 		<?php if(isset($tabErreur)) : ?>
 			<div class="container blocMain" style="width: auto;">
 			<?php foreach($tabErreur as $erreur) : ?>

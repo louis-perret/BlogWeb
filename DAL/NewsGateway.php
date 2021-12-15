@@ -1,5 +1,6 @@
 <?php
 
+	//Fait le lien entre la classe News et la table News de la bd
 	class NewsGateway{
 
 		private $con;
@@ -39,13 +40,7 @@
 
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
-
-			$tabNews=[];
-			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
-			}
-			return $tabNews;
-				
+			return DBFactory_News::creer($res,'mysql');
 		}
 
 		//Objectif : Récupérer toutes les news par rapport à une date
@@ -57,12 +52,7 @@
 
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
-
-			$tabNews=[];
-			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
-			}
-			return $tabNews;	
+			return DBFactory_News::creer($res,'mysql');	
 		}
 
 		//Objectif : Récupérer x news par rapport au numéro de page
@@ -77,11 +67,7 @@
 
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
-			$tabNews=[];
-			foreach ($res as $key => $value) {
-				$tabNews[]=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
-			}
-			return $tabNews;
+			return DBFactory_News::creer($res,'mysql');
 		}
 
 		//Objectif : Récupérer le nombre de news dans la base de données
@@ -109,6 +95,7 @@
 			return -1; //La news n'existe pas		
 		}
 
+		//Objectif : Récupère la news d'après son id
 		public function getNewsById($id){
 			$query = "select * from News where id=:id Order by date";
 			$param=array(
@@ -117,13 +104,7 @@
 
 			$this->con->executeQuery($query,$param);
 			$res=$this->con->getResults();
-
-			$tabNews;
-			foreach ($res as $key => $value) {
-				$tabNews=new News((int)($res[$key]['id']),$res[$key]['date'],$res[$key]['titre'],$res[$key]['contenu'],[]);
-			}
-			return $tabNews;
-				
+			return DBFactory_News::creer($res,'mysql');
 		}
 	}
 ?>

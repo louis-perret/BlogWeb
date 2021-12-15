@@ -19,11 +19,4 @@ global $nbComTotal;
 	}
 
 	$tabErreur=[];
-	/*try{
-		$c = new Connexion($_GLOBAL['dsn'],$_GLOBAL['login'],$_GLOBAL['password']);
-	}
-	catch(PDOException $e){
-		$tabErreur[]='Problème de connexion à la base de données';
-		include('Vues/erreur.php');
-	}*/
 ?>

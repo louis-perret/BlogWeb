@@ -16,7 +16,7 @@
 				contenu -> son contenu
 			-Sortie : aucun
 		*/
-		function __construct(int $id,string $date,string $titre,string $contenu, array $tabCommentaires){
+		public function __construct(int $id,string $date,string $titre,string $contenu, array $tabCommentaires){
 			$this->id=$id;
 			$this->date=$date;
 			$this->titre=$titre;
@@ -70,7 +70,7 @@
 
 		/* Renvoie l'instance sous forme de chaîne de caractères */
 		public function __toString(){
-			return "<p>Publié le : {$this->getDate()}</p> <h3> {$this->getTitre()} </h3> <p> {$this->getContenu()} </p>";
+			return "Publié le : {$this->getDate()} {$this->getTitre()} {$this->getContenu()} ";
 		}
 	}
 ?>
