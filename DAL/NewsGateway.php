@@ -11,7 +11,7 @@
 
 		//Objectif : insérer une news dans la BD
 		public function insertNews(News $n){
-			$query = 'insert into News(titre,date,contenu) Values(:titre,STR_TO_DATE(:d,"%Y-%m-%d"),:contenu)';
+			$query = 'insert into News(titre,date,contenu) Values(:titre,STR_TO_DATE(:d,"%Y-%m-%d %H:%i:%s"),:contenu)';
 			$param = array(
                 ':titre' => array($n->getTitre(),PDO::PARAM_STR),
                 ':d' => array($n->getDate(),PDO::PARAM_STR),

@@ -6,7 +6,7 @@ global $dsn;
 global $nbComTotal;
 
 	//Pour passer de l'un à l'autre, passer true à false
-	if(true){ //Pour louis
+	if(false){ //Pour louis
 		$GLOBALS['login']="root";
 		$GLOBALS['password']="_Moomoo/259";
 		$GLOBALS['dsn']="mysql:host=localhost;dbname=bdblog";

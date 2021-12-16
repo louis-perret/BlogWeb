@@ -31,7 +31,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur=$e;
+				$tabErreur[]=$e->getMessage();
 				//$tabErreur[]="Erreur dans l'éxécution de l'action utilisateur";
 				require('Vues/erreur.php');
 			}
@@ -61,7 +61,6 @@
 	
 		//Objectif : Afficher les news recherchées par rapport à un titre
 		public function RechercherNews(){
-			$tabErreur = [];
 			$recherche=$_REQUEST['search_bar']; //On récupère les informations de la barre de recherche
 			if(Validation::verifierChaine($recherche)){ //Si y'a pas d'erreur
 				
@@ -72,8 +71,7 @@
 				require('Vues/pagePrincipale.php');
 			}
 			else{
-				$tabErreur[]="Problème dans la recherche de news";
-				require('Vues/erreur.php');
+				throw(new Exception('saisie de recherche invalide'));
 			}
 			
 		}
@@ -84,6 +82,7 @@
 			$modele=new Modele();
 			$n = $modele->rechercheId($id);
 			$tabCom = $modele->getComById($id);
+			$GLOBALS['nbComTotal']=$modele->totalCommentaire();
 			require('Vues/commentaires.php');		
 		}
 
@@ -101,8 +100,7 @@
 				$this->affichCom();
 			}
 			else{
-				$tabErreur[]="Problème dans la saisie du commentaire";
-				require('Vues/erreur.php');
+				throw(new Exception('saisie de commentaire invalide'));
 			}
 		}
 	}

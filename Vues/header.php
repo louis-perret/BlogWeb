@@ -29,7 +29,7 @@
                     <div class="dropdown-divider"></div>
                   </div>
               </li>
-              
+            
             </ul>
 		
             <?php /* Permet d'afficher un élément html si true dans le if. Servira quand l'admin sera connecté */

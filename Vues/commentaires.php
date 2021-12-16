@@ -61,6 +61,11 @@
             							</div>
             							<p style="text-align: justify;"><?=$com->getContenu() ?></p>
             							<div style="clear: both;"> <!-- Permet de stopper le float --> </div>
+            							<?php if($estConnecte) : ?>
+            								<form method="post" action="index.php?action=suppCom&idCom=<?=$com->getId()?>&id=<?=$n->getId()?>">
+                  								<button type="submit" class="btn btn-dark" style="margin: 10px;">Effacer</button>
+                							</form>
+            							<?php endif; ?>
           						</div>
 							<img src="Images/PhotoProfil.jpg" width="5%" height="5%">
 							</div>

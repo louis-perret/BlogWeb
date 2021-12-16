@@ -6,7 +6,7 @@
 
 		//Objectif : Ajouter une news
 		public function ajouterNews($titre,$contenu){
-			$n=new News(0,date('Y-m-d'),$titre,$contenu,[]);
+			$n=new News(0,date('Y-m-d H:i:s'),$titre,$contenu,[]);
 			$nGT=new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
 			$nGT->insertNews($n);
 		}
@@ -34,7 +34,7 @@
 		//Objectif : Ajouter un commentaire à une news
 		public function ajoutCom ($com, $pseudo, $id){
 			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
-			$c = new Commentaire(date('Y-m-d H:i:s'), $com, $pseudo);
+			$c = new Commentaire(date('Y-m-d H:i:s'), $com, $pseudo, 0);
 			$cGT->insertCom($c,$id); //id -> id de la news
 			$_SESSION['pseudo']=$pseudo; //On garde en mémoire le pseudo entré précédemment pour le prochain ajout de commentaire
 			setcookie('nbCom',$_COOKIE['nbCom']+1); //On actualise
@@ -62,6 +62,11 @@
 		public function getComById ($id){
 			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
 			return $cGT->getCommentairesByNews($id);
+		}
+
+		public function suppCom ($id){
+			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
+			$cGT->suppCom($id);
 		}
 	}
 ?>

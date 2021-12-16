@@ -23,7 +23,7 @@
 		private static function creerComMySql($tabRes){
 			$tabCom=[];
 			foreach ($tabRes as $row) {
-				$tabCom[]=new Commentaire($row['date'],$row['contenu'],$row['pseudo']);
+				$tabCom[]=new Commentaire($row['date'],$row['contenu'],$row['pseudo'],$row['id']);
 			}
 			return $tabCom;
 		}

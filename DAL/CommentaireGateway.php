@@ -50,4 +50,12 @@
 			$res=$this->con->getResults();
 			return $res[0][0];
 		}
+
+		public function suppCom($id){
+			$query = "delete from commentaire where id = :id";
+			$param=array(
+				':id' => array($id,PDO::PARAM_INT),
+			);
+			$this->con->executeQuery($query,$param);
+		}
 }

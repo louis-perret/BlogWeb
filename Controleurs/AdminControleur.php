@@ -41,13 +41,16 @@
 					case 'sedeconnecter':
 						$this->deconnexion();
 						break;
+					case 'suppCom' :
+						$this->suppCom();
+						break;
 					default:
 						$tabErreur[]='action admin invalide';
 						require('Vues/erreur.php');
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]='Erreur 404';
+				$tabErreur[]=$e->getMessage();
 				require('Vues/erreur.php');
 			}
 		}
@@ -71,8 +74,7 @@
 				parent::pageParPage();
 			}
 			else{
-				$tabErreur[]="Problème dans l'ajout d'une news";
-				require('Vues/erreur.php');
+				throw(new Exception('saisie invalide pour le création de news'));
 			}
 			
 		}
@@ -102,16 +104,15 @@
 		    if(count($tabErreur)==0){ //Si y'a pas eu d'erreurs
 		    	$m = new ModeleAdmin();
 		    	$compte=$m->connexion($loginAdmin,$passwordAdmin);
-		    	if($compte!=null){ //Si y'a un résultat
+		    	if($compte!=null){ //Si y'a un résultat		    		
 		    		parent::pageParPage();
 		    	}
 		    	else{ 
-		    		$tabErreur[]='Pseudo ou mot de passe incorrect';
-		    		require('Vues/erreur.php');
+		    		throw(new Exception('action administrateur exécutée par utilisateur non connecté'));
 		    	}
 		    }
 		    else{
-		    	require('Vues/erreur.php');
+		    	throw(new Exception('saisie de connection invalide'));
 		    }
 			
 		}
@@ -120,7 +121,15 @@
 		public function deconnexion(){
 			$m = new ModeleAdmin();
 			$m->deconnexion();
-			$this->afficherNews();
+			parent::pageParPage();
+		}
+
+		public function suppCom(){
+			$id=$_REQUEST['idCom'];
+			$modele=new Modele();
+			$modele->suppCom($id);
+			$GLOBALS['nbComTotal']=$modele->totalCommentaire();
+			parent::affichCom();
 		}
 	}
 ?>

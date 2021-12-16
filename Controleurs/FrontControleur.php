@@ -6,7 +6,7 @@
 		{
 			try
 			{
-				$listeAction_Admin = array('afficherFormNews', 'ajouterNews', 'supprimerNews', 'connexion', 'seconnecter', 'sedeconnecter');
+				$listeAction_Admin = array('afficherFormNews', 'ajouterNews', 'supprimerNews', 'connexion', 'seconnecter', 'sedeconnecter', 'suppCom');
 				if(isset($_SESSION['role'])) //Si le role admin existe 		
 					$admin = $_SESSION['role']; 
 				else
