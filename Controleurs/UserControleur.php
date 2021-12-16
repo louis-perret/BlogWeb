@@ -53,8 +53,9 @@
 			if(!$b){ //Si le numéro est incorrecte
 				$numPage=1; //On va sur la première page 
 			}
-			$GLOBALS['nbComTotal']=$model->totalCommentaire(); //On update le nombre de commentaires
 			$tabNews=$model->findByPage($numPage,$nbNews_par_Page); //On récupère les news pour la n-ième page
+			$nbComTotal=$model->totalCommentaire();
+			$compteur=$model->getCompteurCom();
 			require('Vues/pagePrincipale.php');
 		}
 	
@@ -63,11 +64,12 @@
 		public function RechercherNews(){
 			$recherche=$_REQUEST['search_bar']; //On récupère les informations de la barre de recherche
 			if(Validation::verifierChaine($recherche)){ //Si y'a pas d'erreur
-				
 				$modele=new Modele();
 				$tabNews = $modele->RechercherNews($recherche);
 				$numPage = 0;
 				$nbPagesMax = 0;
+				$nbComTotal=$modele->totalCommentaire();
+				$compteur=$modele->getCompteurCom();
 				require('Vues/pagePrincipale.php');
 			}
 			else{
@@ -78,12 +80,28 @@
 		
 		//Objectif : Afficher les commentaires d'une news
 		public function affichCom(){
-			$id = $_REQUEST['id'];
+			if(isset($_REQUEST['id'])){
+				$id = $_REQUEST['id'];
+			}
+			else{
+				throw(new Exception('id incorrecte'));
+			}
+			if(!Validation::verifierEntier($id)){
+				throw(new Exception('id incorrecte'));
+			}
 			$modele=new Modele();
 			$n = $modele->rechercheId($id);
-			$tabCom = $modele->getComById($id);
-			$GLOBALS['nbComTotal']=$modele->totalCommentaire();
-			require('Vues/commentaires.php');		
+			if(!isset($n)){
+				$this->pageParPage();
+			}
+			else{
+				$tabCom = $modele->getComById($id);
+				$GLOBALS['nbComTotal']=$modele->totalCommentaire();
+				$nbComTotal=$modele->totalCommentaire();
+				$compteur=$modele->getCompteurCom();
+				$pseudo=$modele->getPseudoBySession();
+			 	require('Vues/commentaires.php');		
+			}
 		}
 
 		//Objectif : Ajouter un commentaire dans le blog
@@ -92,11 +110,13 @@
 			$commentaire = $_REQUEST['com'];
 			$pseudo = $_REQUEST['pseudo'];
 			$idNews = $_REQUEST['id'];
+			if(!Validation::verifierEntier($idNews)){
+				throw(new Exception('id incorrecte'));
+			}
 			Validation::verifierCommentaire($pseudo,$commentaire, $tabErreur);
 			if(count($tabErreur)==0){ //Si y'a pas d'erreur
 				$modele=new Modele();
 				$modele->ajoutCom($commentaire, $pseudo, $idNews);
-				$GLOBALS['nbComTotal']=$modele->totalCommentaire(); //On actualise
 				$this->affichCom();
 			}
 			else{

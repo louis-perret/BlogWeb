@@ -2,8 +2,16 @@
 class Validation
 {
 
+	//Objectif : Vérifie si un entier est ni nulle, ni vide et "bien nettoyée"
+	public static function verifierEntier($i){
+		if(isset($i)){
+			return filter_var($i,FILTER_VALIDATE_INT);
+		}
+		return false;
+	}
+
 	//Objectif : Vérifie si une chaîne est ni nulle, ni vide et "bien nettoyée"
-	public static function verifierChaine(string &$chaine){
+	public static function verifierChaine(&$chaine){
 		if(!isset($chaine) || empty($chaine))
 		{
 			return false;
@@ -68,7 +76,6 @@ class Validation
 		if(!isset($numPage) || $numPage!=filter_var($numPage,FILTER_VALIDATE_INT) || $numPage<=0 || $numPage>$nbMax){
 			return false;
 		}
-
 		return true;
 	}
 }

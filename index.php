@@ -11,10 +11,6 @@
 			Autoload::charger();?>		
 		<?php 
 			session_start(); //lance une session
-			if(!isset($_COOKIE['nbCom'])){ //Si l'utilisateur n'a pas de cookie 'nbCom'
-				setcookie('nbCom',0,time()+365*24*3600); //On le crée avec 0 comme valeur par défaut
-			}
-			
 			new FrontControleur();
 		?>
 

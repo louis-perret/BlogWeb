@@ -45,7 +45,7 @@
     				<div class="col" id="sectionCom">
 					<form class="form-inline my-2 my-lg-0" action="index.php">
 						<input class="form-control mr-sm-2" type="search" placeholder="Commenter" aria-label="Commenter" name="com">
-						<input class="form-control mr-sm-2" type="search" placeholder="pseudo" aria-label="pseudo" name="pseudo" value="<?=$_SESSION['pseudo']??""?>">
+						<input class="form-control mr-sm-2" type="search" placeholder="pseudo" aria-label="pseudo" name="pseudo" value="<?=$pseudo?>">
 						<input type="hidden" value="<?=$n->getId()?>" name="id">
             					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Poster</button>
 					</form>

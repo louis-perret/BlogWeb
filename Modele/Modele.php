@@ -1,15 +1,8 @@
 <?php
 
-	//Classe faisant le lien entre controllet et la dal
+	//Classe faisant le lien entre controller et la dal pour les actions utilisateurs
 	class Modele{
 
-
-		//Objectif : Ajouter une news
-		public function ajouterNews($titre,$contenu){
-			$n=new News(0,date('Y-m-d H:i:s'),$titre,$contenu,[]);
-			$nGT=new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
-			$nGT->insertNews($n);
-		}
 		
 		//Objectif : Récupère une news d'après son titre
 		public function RechercherNews($recherche){
@@ -18,26 +11,22 @@
 			return $tabnews;
 		}
 
-		//Objectif : Supprime une news
-		public function supprimerNews($id){;
-			$nGT = new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
-			$nGT->deleteNews($id);
-		}
-
 		//Objectif : Reécupère une news par rapport à son id
 		public function rechercheId($id){
 			$nGT = new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
 			$n = $nGT->getNewsById($id);
-			return $n[0];		
+			return $n[0]??null;		
 		}
 
 		//Objectif : Ajouter un commentaire à une news
 		public function ajoutCom ($com, $pseudo, $id){
 			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
 			$c = new Commentaire(date('Y-m-d H:i:s'), $com, $pseudo, 0);
-			$cGT->insertCom($c,$id); //id -> id de la news
-			$_SESSION['pseudo']=$pseudo; //On garde en mémoire le pseudo entré précédemment pour le prochain ajout de commentaire
-			setcookie('nbCom',$_COOKIE['nbCom']+1); //On actualise
+			if($this->rechercheId($id)!=null){ //Si la news n'existe pas, on ajoute aucun commentaire
+				$cGT->insertCom($c,$id); //id -> id de la news
+				$_SESSION['pseudo']=$pseudo; //On garde en mémoire le pseudo entré précédemment pour le prochain ajout de commentaire
+				$this->incrementerCompteurCom();
+			}
 		}
 
 		//Objectif : Récupérer le nombre total de news
@@ -64,9 +53,35 @@
 			return $cGT->getCommentairesByNews($id);
 		}
 
-		public function suppCom ($id){
-			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
-			$cGT->suppCom($id);
+		//Objectif : Récupérer le compteur du nombre de commentaire de l'utilisateur
+		public function getCompteurCom(){
+			if(isset($_COOKIE['nbCom'])){ //Si le cookie existe
+				return $_COOKIE['nbCom'] ? Validation::verifierEntier($_COOKIE['nbCom']) : 0; //On retourne sa valeur si la validation est correcte sinon 0
+			}
+			return 0;
+		}
+
+		//Objectif : Incrémenter 
+		public function incrementerCompteurCom(){
+			if(isset($_COOKIE['nbCom'])){
+				setcookie('nbCom',$this->getCompteurCom()+1); //On actualise
+			}
+			else{
+				setcookie('nbCom',0,time()+365*24*3600);
+			}
+		}
+
+		//Objectif : Retourner le pseudo sauvegardé
+		public function getPseudoBySession(){
+			if(isset($_SESSION['pseudo'])){ //Si elle existe
+				if(Validation::verifierChaine($_SESSION['pseudo'])){ //On la vérifie
+					return $_SESSION['pseudo'];
+				}
+				else{
+					throw(new Exception('pseudo de session incorrecte'));
+				}
+			}
+			return ""; //Dans le cas où elle n'existe pas
 		}
 	}
 ?>

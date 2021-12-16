@@ -1,6 +1,6 @@
 <?php
 
-	//Classe gérant la connexion & déconnexion de l'administrateur
+	//Classe faisant le lien entre controller et la dal pour les actions de l'administrateur
 	class ModeleAdmin{
 
 
@@ -29,15 +29,32 @@
 			if(isset($_SESSION['role']) && $_SESSION['role']){
 				return true;
 			}
-
 			return false;
 		}
 
-		//Objectif : Supprime la session
+		//Objectif : Supprimer la session
 		public function deconnexion(){
 			session_unset();
 			session_destroy();
 			$_SESSION=array();
+		}
+
+		//Objectif : Ajouter une news
+		public function ajouterNews($titre,$contenu){
+			$n=new News(0,date('Y-m-d H:i:s'),$titre,$contenu,[]);
+			$nGT=new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
+			$nGT->insertNews($n);
+		}
+		//Objectif : Supprimer une news
+		public function supprimerNews($id){;
+			$nGT = new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
+			$nGT->deleteNews($id);
+		}
+
+		//Objectif : Supprimer un commentaire
+		public function suppCom ($id){
+			$cGT = new CommentaireGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
+			$cGT->suppCom($id);
 		}
 
 	}

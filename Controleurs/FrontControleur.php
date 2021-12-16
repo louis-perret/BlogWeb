@@ -17,10 +17,10 @@
 					$action = null;
 				if(in_array($action,$listeAction_Admin))
 				{
-					if(!$admin && $action != 'seconnecter') //S'il n'est pas connecté et qu'il ne tente pas de se connecter
-						require('Vues/pageConnexion.php'); //On lui affiche le formulaire de connexion
-					else
-						new AdminControleur(); //On instancie l'AdminController s'il souhaite effectuer une action admin
+					if(!$admin){ //S'il n'est pas connecté
+						$_REQUEST['action']='connexion'; //On force l'utilisateur à se connecter
+					}
+					new AdminControleur(); //On instancie l'AdminController s'il souhaite effectuer une action admin
 				}
 				else
 					new UserControleur(); //On instancie le UserController s'il souhaite effectuer une action utilisateur

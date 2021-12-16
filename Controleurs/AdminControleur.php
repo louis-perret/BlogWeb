@@ -58,6 +58,9 @@
 
 		//Objectif : Afficher le formulaire pour ajouter une news
 		public function afficherFormNews(){
+			$modele=new Modele();
+			$nbComTotal=$modele->totalCommentaire();
+			$compteur=$modele->getCompteurCom();
 			require('Vues/creerNews.php');
 		}
 
@@ -69,7 +72,7 @@
 			Validation::verifierNews($titre,$contenu,$tabErreur); //On les vérifie
 			if(count($tabErreur)==0){ //Si y'a pas d'erreur
 				
-				$modele=new Modele();
+				$modele=new ModeleAdmin();
 				$modele->ajouterNews($titre,$contenu);
 				parent::pageParPage();
 			}
@@ -82,13 +85,19 @@
 		//Objectif : Supprimer une news du blog
 		public function supprimerNews(){
 			$id=$_REQUEST['id'];
-			$modele=new Modele();
+			if(!Validation::verifierEntier($id)){
+				throw(new Exception('id incorrecte'));
+			}
+			$modele=new ModeleAdmin();
 			$modele->supprimerNews($id);
 			parent::pageParPage();
 		}
 
 		//Objectif : Afficher le formulaire de connexion
 		public function afficherFormConnexion(){
+			$modele=new Modele();
+			$nbComTotal=$modele->totalCommentaire();
+			$compteur=$modele->getCompteurCom();
 			require('Vues/pageConnexion.php');
 		}
 
@@ -124,9 +133,13 @@
 			parent::pageParPage();
 		}
 
+		//Objectif : Supprimer un commentaire
 		public function suppCom(){
 			$id=$_REQUEST['idCom'];
-			$modele=new Modele();
+			if(!Validation::verifierEntier($id)){
+				throw(new Exception('id incorrecte'));
+			}
+			$modele=new ModeleAdmin();
 			$modele->suppCom($id);
 			$GLOBALS['nbComTotal']=$modele->totalCommentaire();
 			parent::affichCom();
