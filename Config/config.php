@@ -1,5 +1,5 @@
 <?php
-
+//Met en place les variables globales
 global $login;
 global $password;
 global $dsn;

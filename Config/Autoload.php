@@ -1,11 +1,11 @@
 <?php
-	//objectif : charger les fichiers de classe lors d'une instanciation
+	//Objectif : Charger les fichiers de classe lors d'une instanciation
 	class Autoload{
 
 		//$_instance = assure la singularité de l'instance
 	 	private static $_instance = null;
 
-	//objectif : créer une instance de autoload si il n'en existe pas afin de préserver la singularité (patron singleton)
+	//Objectif : Créer une instance de autoload si il n'en existe pas afin de préserver la singularité (patron singleton)
         public static function charger()
     	{
         	if(null !== self::$_instance) {
@@ -22,7 +22,7 @@
 	       	 }
 	    }
 
-	//objectif : détruire l'instance de l'autoload
+	//Objectif : Détruire l'instance de l'autoload
         public static function shutDown()
     	{
         	if(null !== self::$_instance) {
@@ -37,7 +37,7 @@
         	}	
    	 }
 
-	//objectif : charger un fichier de classe
+	//objectif : Charger un fichier de classe
 	//$class : classe contenue dans le fichier à charger
         private static function _autoload($class)
     	{	

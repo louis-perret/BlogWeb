@@ -7,8 +7,9 @@
 			try
 			{
 				$listeAction_Admin = array('afficherFormNews', 'ajouterNews', 'supprimerNews', 'connexion', 'seconnecter', 'sedeconnecter', 'suppCom');
-				if(isset($_SESSION['role'])) //Si le role admin existe 		
-					$admin = $_SESSION['role']; 
+				$mdlAdmin=new ModeleAdmin();
+				if($mdlAdmin->isAdmin()) //Si le role admin existe 		
+					$admin=true; //On passe le role à true
 				else
 					$admin = false; //On le met à false sinon
 				if(isset($_REQUEST['action']))
@@ -17,7 +18,7 @@
 					$action = null;
 				if(in_array($action,$listeAction_Admin))
 				{
-					if(!$admin){ //S'il n'est pas connecté
+					if(!$admin && $_REQUEST['action']!='seconnecter'){ //S'il n'est pas connecté et qu'il ne tente pas de se connecter
 						$_REQUEST['action']='connexion'; //On force l'utilisateur à se connecter
 					}
 					new AdminControleur(); //On instancie l'AdminController s'il souhaite effectuer une action admin

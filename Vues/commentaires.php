@@ -52,6 +52,7 @@
 					<p text-align="center"><h2>Section Commentaire</h2></p>
 					
       					<?php if (isset($tabCom)) :
+      						//Affiche les commentaires de la news
           					foreach($tabCom as $com) : ?>
 							<div class="displayer">
 							<div class="container blocMain">

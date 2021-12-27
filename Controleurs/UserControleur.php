@@ -17,10 +17,10 @@
 					case 'affichCom' :
 						$this->affichCom();
 						break;
-					case NULL :
+					case NULL : //action par défaut
 						if(isset($_REQUEST['search_bar']))//la search bar ne renvoie pas d'action
 							$this->RechercherNews();
-						elseif(isset($_REQUEST['com']))
+						elseif(isset($_REQUEST['com'])) //Si c'est pour ajouter un commentaire
 							$this->ajoutCom();
 						else
 							$this->pageParPage();
@@ -31,8 +31,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]=$e->getMessage();
-				//$tabErreur[]="Erreur dans l'éxécution de l'action utilisateur";
+				$tabErreur[]="Erreur dans l'exécution de l'action utilisateur";
 				require('Vues/erreur.php');
 			}
 		}
@@ -54,8 +53,10 @@
 				$numPage=1; //On va sur la première page 
 			}
 			$tabNews=$model->findByPage($numPage,$nbNews_par_Page); //On récupère les news pour la n-ième page
-			$nbComTotal=$model->totalCommentaire();
-			$compteur=$model->getCompteurCom();
+			$modeleAdmin=new ModeleAdmin(); 
+			$estConnecte=$modeleAdmin->isAdmin();//False si pas admin
+			$nbComTotal=$model->totalCommentaire(); //Récupère le nombre total de commentaires du blog
+			$compteur=$model->getCompteurCom(); //Récupère le nombre de commentaires postés par l'utilisateur
 			require('Vues/pagePrincipale.php');
 		}
 	
@@ -68,6 +69,8 @@
 				$tabNews = $modele->RechercherNews($recherche);
 				$numPage = 0;
 				$nbPagesMax = 0;
+				$modeleAdmin=new ModeleAdmin(); 
+				$estConnecte=$modeleAdmin->isAdmin();
 				$nbComTotal=$modele->totalCommentaire();
 				$compteur=$modele->getCompteurCom();
 				require('Vues/pagePrincipale.php');
@@ -97,6 +100,8 @@
 			else{
 				$tabCom = $modele->getComById($id);
 				$GLOBALS['nbComTotal']=$modele->totalCommentaire();
+				$modeleAdmin=new ModeleAdmin(); 
+				$estConnecte=$modeleAdmin->isAdmin();
 				$nbComTotal=$modele->totalCommentaire();
 				$compteur=$modele->getCompteurCom();
 				$pseudo=$modele->getPseudoBySession();

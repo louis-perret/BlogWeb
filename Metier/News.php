@@ -7,21 +7,14 @@
 		private $contenu; //Son contenu
 		private $tabCommentaires = [];
 
-		/* 
-		Objectif : Construire un objet News
-		Paramètres :
-			-Entrée :
-				date -> date de publication
-				titre -> titre de la news
-				contenu -> son contenu
-			-Sortie : aucun
-		*/
+		
+		//Constructeur
 		public function __construct(int $id,string $date,string $titre,string $contenu, array $tabCommentaires){
 			$this->id=$id;
 			$this->date=$date;
 			$this->titre=$titre;
 			$this->contenu=$contenu;
-			$this->tabCommentaires=$tabCommentaires; //On initialise sa liste de commentaires
+			$this->tabCommentaires=$tabCommentaires;
 		}
 
 		/* Getter et setter de chaque propriété */

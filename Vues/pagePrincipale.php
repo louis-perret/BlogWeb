@@ -1,8 +1,9 @@
 <?php require('Vues/header.php'); ?>
     <div>
-      <!--News-->
+      <!-- Page principale-->
       <main class="container">
         <?php 
+          //Affiche toutes les news de tabNews
           if(isset($tabNews)) : ?>
             <?php foreach($tabNews as $news) : ?>
             <div class="container blocMain">
@@ -33,6 +34,7 @@
     </div>
 
     <?php 
+      //Lien dynamique vers d'autres pages
         $pagePreced=$numPage-1;
         $pageSuiv=$numPage+1;
       

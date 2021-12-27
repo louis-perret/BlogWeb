@@ -9,7 +9,7 @@
 			$this->con=$con;
 		}
 
-		//Objectif : insérer une news dans la BD
+		//Objectif : Insérer une news dans la BD
 		public function insertNews(News $n){
 			$query = 'insert into News(titre,date,contenu) Values(:titre,STR_TO_DATE(:d,"%Y-%m-%d %H:%i:%s"),:contenu)';
 			$param = array(
@@ -20,14 +20,13 @@
             $this->con->executeQuery($query,$param);
 		}
 
-		//Objectif ; supprimer une news de la BD par rapport à son id
+		//Objectif : Supprimer une news de la BD par rapport à son id
 		public function deleteNews(int $id){
 			$query = 'delete from News where id=:id';
 			$param = array(
                 ':id' => array($id,PDO::PARAM_INT),
  
             );
-
             $this->con->executeQuery($query,$param);
 		}
 

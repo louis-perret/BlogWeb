@@ -1,5 +1,5 @@
 <?php
-	//Controller pour les actions admin
+	//Contrôleur pour les actions admin
 	class AdminControleur extends UserControleur{
 
 
@@ -7,17 +7,17 @@
 		public function __construct(){
 			try{
 				if(isset($_REQUEST['action'])){
-					$action=$_REQUEST['action'];
+					$action=$_REQUEST['action']; //Si l'action existe on la récupère
 				}
 				else{
-					$action=NULL;
+					$action=NULL; //Sinon on l'a met à null
 				}
 
 				switch ($action) {
 
-					case NULL:
-						$this->afficherNews();
-						break;
+					/*case NULL: //Action par défaut
+						parent::pageParPage();
+						break;*/
 					case 'afficherFormNews':
 						$this->afficherFormNews();
 						break;
@@ -50,7 +50,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]=$e->getMessage();
+				$tabErreur[]="Erreur dans l'exécution de l'action";
 				require('Vues/erreur.php');
 			}
 		}
@@ -59,8 +59,11 @@
 		//Objectif : Afficher le formulaire pour ajouter une news
 		public function afficherFormNews(){
 			$modele=new Modele();
+			/* Utile pour le header */
 			$nbComTotal=$modele->totalCommentaire();
 			$compteur=$modele->getCompteurCom();
+			$modeleAdmin=new ModeleAdmin(); 
+			$estConnecte=$modeleAdmin->isAdmin();
 			require('Vues/creerNews.php');
 		}
 
@@ -98,6 +101,8 @@
 			$modele=new Modele();
 			$nbComTotal=$modele->totalCommentaire();
 			$compteur=$modele->getCompteurCom();
+			$modeleAdmin=new ModeleAdmin(); 
+			$estConnecte=$modeleAdmin->isAdmin();
 			require('Vues/pageConnexion.php');
 		}
 
@@ -108,7 +113,7 @@
 			$passwordAdmin=$_REQUEST['password'];
 		    $tabErreur=[];
 
-		    Validation::verifierConnexion($loginAdmin,$passwordAdmin,$tabErreur);
+		    Validation::verifierConnexion($loginAdmin,$passwordAdmin,$tabErreur); //On vérifie le login et mdp
 		            
 		    if(count($tabErreur)==0){ //Si y'a pas eu d'erreurs
 		    	$m = new ModeleAdmin();

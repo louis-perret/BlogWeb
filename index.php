@@ -6,12 +6,11 @@
 		<title>Blog</title>
 	</head>
 	<body>
-		<?php require_once('Config/config.php'); ?>
-		<?php require_once('Config/Autoload.php');
-			Autoload::charger();?>		
-		<?php 
+		<?php require_once('Config/config.php');
+			require_once('Config/Autoload.php');
+			Autoload::charger();
 			session_start(); //lance une session
-			new FrontControleur();
+			new FrontControleur(); //On appel notre front-controller
 		?>
 
 	</body>

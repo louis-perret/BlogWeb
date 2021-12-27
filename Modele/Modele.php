@@ -11,7 +11,7 @@
 			return $tabnews;
 		}
 
-		//Objectif : Reécupère une news par rapport à son id
+		//Objectif : Récupère une news par rapport à son id
 		public function rechercheId($id){
 			$nGT = new NewsGateway(new Connexion($GLOBALS['dsn'],$GLOBALS['login'],$GLOBALS['password']));
 			$n = $nGT->getNewsById($id);
@@ -25,7 +25,7 @@
 			if($this->rechercheId($id)!=null){ //Si la news n'existe pas, on ajoute aucun commentaire
 				$cGT->insertCom($c,$id); //id -> id de la news
 				$_SESSION['pseudo']=$pseudo; //On garde en mémoire le pseudo entré précédemment pour le prochain ajout de commentaire
-				$this->incrementerCompteurCom();
+				$this->incrementerCompteurCom(); //On incrémente son compteur de commentaires
 			}
 		}
 
@@ -61,13 +61,13 @@
 			return 0;
 		}
 
-		//Objectif : Incrémenter 
+		//Objectif : Incrémenter le compteur du nombre de commentaires de l'utilisateur
 		public function incrementerCompteurCom(){
 			if(isset($_COOKIE['nbCom'])){
 				setcookie('nbCom',$this->getCompteurCom()+1); //On actualise
 			}
 			else{
-				setcookie('nbCom',0,time()+365*24*3600);
+				setcookie('nbCom',0,time()+365*24*3600); //Sinon on le créer
 			}
 		}
 

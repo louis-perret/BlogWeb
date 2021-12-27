@@ -2,7 +2,7 @@
 class Validation
 {
 
-	//Objectif : Vérifie si un entier est ni nulle, ni vide et "bien nettoyée"
+	//Objectif : Vérifie si un entier est ni nulle et "bien nettoyé"
 	public static function verifierEntier($i){
 		if(isset($i)){
 			return filter_var($i,FILTER_VALIDATE_INT);
@@ -24,7 +24,7 @@ class Validation
 		return true;
 	}
 
-	//Objectif : Vérifie si le titre,contenu ne sont ni nuls, ni vide et "bien nettoyé". Vérifie si l'image est bien nettoyée.
+	//Objectif : Vérifie si le titre,contenu ne sont ni nulle, ni vides et "bien nettoyés".
 	public static function verifierNews (string &$titre, string &$contenu, &$vueErreur)
 	{
 		if(!self::verifierChaine($titre))
@@ -41,7 +41,7 @@ class Validation
 		
 	}
 
-	//Objectif : Vérifie si le pseudo et le contenu du commentaire ne sont ni nuls, ni vide et "bien nettoyé"
+	//Objectif : Vérifie si le pseudo et le contenu du commentaire ne sont ni nulle, ni vides et "bien nettoyés"
 	public static function verifierCommentaire(string $pseudo,string $contenu, &$vueErreur){
 		if(!self::verifierChaine($pseudo))
 		{
@@ -57,7 +57,7 @@ class Validation
 
 	}
 
-	//Objectif : Vérifie si le login et le mot de passe rentrés ne sont ni vide, ni remplis d'espace
+	//Objectif : Vérifie si le login et le mot de passe rentrés ne sont ni vides, ni remplis d'espace
 	//Sera amménée à changer quand on verra la connexion en cours
 	public static function verifierConnexion(string $login, string $password, &$vueErreur){
 		if(!self::verifierChaine($login)){

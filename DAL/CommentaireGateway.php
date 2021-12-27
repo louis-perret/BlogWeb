@@ -51,6 +51,7 @@
 			return $res[0][0];
 		}
 
+		//Objectif : Supprimer un commentaire à partir de son id
 		public function suppCom($id){
 			$query = "delete from commentaire where id = :id";
 			$param=array(
