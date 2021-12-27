@@ -31,7 +31,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]="Erreur dans l'exécution de l'action utilisateur";
+				$tabErreur[]=$e->getMessage();
 				require('Vues/erreur.php');
 			}
 		}

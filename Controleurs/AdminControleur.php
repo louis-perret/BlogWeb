@@ -14,10 +14,6 @@
 				}
 
 				switch ($action) {
-
-					/*case NULL: //Action par défaut
-						parent::pageParPage();
-						break;*/
 					case 'afficherFormNews':
 						$this->afficherFormNews();
 						break;
@@ -50,7 +46,7 @@
 				}
 			}
 			catch(Exception $e){
-				$tabErreur[]="Erreur dans l'exécution de l'action";
+				$tabErreur[]=$e->getMessage();
 				require('Vues/erreur.php');
 			}
 		}
@@ -146,7 +142,6 @@
 			}
 			$modele=new ModeleAdmin();
 			$modele->suppCom($id);
-			$GLOBALS['nbComTotal']=$modele->totalCommentaire();
 			parent::affichCom();
 		}
 	}
