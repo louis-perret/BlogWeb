@@ -15,7 +15,9 @@ Architecture du projet :
 5. Dossier DAL -> contient nos gateways associées à nos classes métiers,la classe connexion pour se connecter à notre bd ainsi que nos fabriques
 6. Dossier Controleurs -> contient nos deux contrôleurs ainsi que notre front controller
 7. Dossier Config -> contient notre autoloader,notre classe validation ainsi que notre fichiers config
+8. dbjuduteyrat.sql -> fichier permettant de créer notre base de données
 
+Remarque : le fichier config.php permet de modifier les paramètres de connexion à la base de données au besoin.
 Patrons d'architecture utilisés : 
 	-MVC
 	-Front controller
