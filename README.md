@@ -2,12 +2,9 @@
 
 Contexte : Projet réalisé en programmation web
 
-
 Sujet : Gestion d'un blog
 
-
 Auteur : Perret Louis & Jules Duteyrat de la promotion 2021/2022
-
 
 Langages utilisés : 
 	-HTML/CSS avec le framework Bootstrap pour les vues (front)
@@ -24,6 +21,7 @@ Architecture du projet :
 8. dbjuduteyrat.sql -> fichier permettant de créer notre base de données
 
 Remarque : le fichier config.php permet de modifier les paramètres de connexion à la base de données au besoin.
+
 Patrons d'architecture utilisés : 
 	-MVC
 	-Front controller
