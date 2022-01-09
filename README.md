@@ -1,8 +1,14 @@
 # ProjetBlog
 
 Contexte : Projet réalisé en programmation web
+
+
 Sujet : Gestion d'un blog
+
+
 Auteur : Perret Louis & Jules Duteyrat de la promotion 2021/2022
+
+
 Langages utilisés : 
 	-HTML/CSS avec le framework Bootstrap pour les vues (front)
 	-PHP (back)
